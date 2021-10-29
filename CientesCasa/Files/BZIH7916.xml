@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<cfdi:Comprobante Version="3.3" Serie="B" Folio="7916" Fecha="2021-01-18T11:23:04" Sello="ayG3iXyFduZY5PR70TSy9LaK2G+y33XuS1xgKblppL9oIvChQtTgelSx4DWQSeGLvTEzpY2bhndA8Uxk9rM4NOhZxc0ywcZa705agVpbQ71i03MOQPY0Aqj+hWSjudxWJlJWm6ZY/uvvLdzk/Sw7YSL5WPWX7hJZqD4wP+EZnTy0HKc0ZXunnhTDbG/e33ZKFcCDI6pHUkRRbDJ8bXdPP4UDKPpMAKCgS3XhKYMvA4pc9esRhHdokTxm39+Jvlkrywu5EPRuPEph1MXZny5lDHWW1yT/5YOyTyg+Yn1ZIm44cOpTUrQX1fzJXrgtvCsC4IuTKGvT0lEUacU0Sha3lQ==" FormaPago="99" NoCertificado="00001000000503262592" Certificado="MIIGLTCCBBWgAwIBAgIUMDAwMDEwMDAwMDA1MDMyNjI1OTIwDQYJKoZIhvcNAQELBQAwggGEMSAwHgYDVQQDDBdBVVRPUklEQUQgQ0VSVElGSUNBRE9SQTEuMCwGA1UECgwlU0VSVklDSU8gREUgQURNSU5JU1RSQUNJT04gVFJJQlVUQVJJQTEaMBgGA1UECwwRU0FULUlFUyBBdXRob3JpdHkxKjAoBgkqhkiG9w0BCQEWG2NvbnRhY3RvLnRlY25pY29Ac2F0LmdvYi5teDEmMCQGA1UECQwdQVYuIEhJREFMR08gNzcsIENPTC4gR1VFUlJFUk8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQQ0lVREFEIERFIE1FWElDTzETMBEGA1UEBwwKQ1VBVUhURU1PQzEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMVwwWgYJKoZIhvcNAQkCE01yZXNwb25zYWJsZTogQURNSU5JU1RSQUNJT04gQ0VOVFJBTCBERSBTRVJWSUNJT1MgVFJJQlVUQVJJT1MgQUwgQ09OVFJJQlVZRU5URTAeFw0yMDAyMjExODE0NDBaFw0yNDAyMjExODE0NDBaMIH7MSswKQYDVQQDEyJBRVJPUFVFUlRPIERFIFpJSFVBVEFORUpPIFNBIERFIENWMSswKQYDVQQpEyJBRVJPUFVFUlRPIERFIFpJSFVBVEFORUpPIFNBIERFIENWMSswKQYDVQQKEyJBRVJPUFVFUlRPIERFIFpJSFVBVEFORUpPIFNBIERFIENWMSUwIwYDVQQtExxBWkk5ODA1MjhCVjUgLyBNT0dKNTMwODA5MjM1MR4wHAYDVQQFExUgLyBNT0dKNTMwODA5SERGUk1SMDExKzApBgNVBAsTIkFFUk9QVUVSVE8gREUgWklIVUFUQU5FSk8gU0EgREUgQ1YwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCEfdP5YM2mmzNif9MpPHskOTboKjjccl0a6STOEkte1ArDn1lCjNbnpS3ptF60PedBeufDhK0r6Wx8JvZbyNdonkhFufJSfiMPKit+sAgyFs22JpmuOgbgIO7j0f0M+hvB35+E7B9oaDKVjwfoCq10VW8PpQOx+YNM/EvlIlRapYC0/hfA+o+WTJAvTujWTiyvTiiKEUxDHEfkvdeYTwYrcr8qknVB9eHXVUIXZEcHn6d2VD6sgJqkpBmiuI7oL9SUOtZurYam7MZVlO2mTa3ej6a1fsTViDlTnDp2AbmqKdvoj7Cpyn+CqgsHIxlDc7wC+gwFMZdHcSRzBrmuxlqNAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBCwUAA4ICAQCHu3qvpxzeiSMUDsmeavxOeWuedg2nWo6nVywR1k5nDY9KsMZv/HUXtFpiEif98k+waaidMHJjLRtpq6alu3SJyL5C3gXMlVhoxfHiTUOCXioSaXfl4iowvBk0Aqi2qhe6upTnCFApdMyP2pP9AFbH4cL3ZPfa2Sc86+z4R0De/WDGQFKG993QyHTxMMB8qfO9Uan5pIJaUZdBjIvRUrM9XFBNSh4FTjaPbe2wap52qXhPlRkeDHge5ZDZagyPAE+UarsZODekrMw25ftEDmGRb9C+3kGHbi1FmUTzt5+OreYeWy8F+kUPqjMGQmwYSKgGWXqQFPmWEnHRsBlSZp7kSL8KrKQZ1N7eDH4jdlKDpyTY7oF44Ialp7QpGAm6n15NCIah2g6kLvkKBp/V1nJCr40mpp+4ZcY86pRgS0XSTVDz6IKD2zA0+9mwCQnesuP7ihLjw1CToZg3G0pK0ii6H2MGXc6TGj73Qm3W/5Oq/VqC0HmYjhBJeXI8XOXSJJsuxYmkEvIWnY6HcW+dOBmRgSr1UP3JGi7v8nkKLzn/sdrGO9ud4xkOwG5CvFjahY1HQ8h4R7ZfcuFnJoEkpNnPBm3SMbICOP+llXvEs6Ct8Ado1R/6LtsJWwlb0wvOxmjIMXWqaufaok2vr0jvHODum64suS5GGPN/KJGtWcPe1w==" SubTotal="12960.00" Moneda="MXN" TipoCambio="1" Total="15033.60" TipoDeComprobante="I" MetodoPago="PPD" LugarExpedicion="40880" xmlns:ns4="http://www.diverza.com/ns/addenda/diverza/1" xmlns:ns3="http://www.sat.gob.mx/TimbreFiscalDigital" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd">
+    <cfdi:Emisor Rfc="AZI980528BV5" Nombre="Aeropuerto de Zihuatanejo, S.A. de C.V." RegimenFiscal="601"/>
+    <cfdi:Receptor Rfc="AEJ8111232I9" Nombre="AEROLINEAS EJECUTIVAS, S.A. DE C.V." UsoCFDI="P01"/>
+    <cfdi:Conceptos>
+        <cfdi:Concepto ClaveProdServ="78141805" NoIdentificacion="01.01.01321.4101" Cantidad="1" ClaveUnidad="E48" Unidad="NO APLICA" Descripcion="TUA Nacional Edificio Aviacion General" ValorUnitario="12960.00" Importe="12960.00">
+            <cfdi:Impuestos>
+                <cfdi:Traslados>
+                    <cfdi:Traslado Base="12960" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="2073.6"/>
+                </cfdi:Traslados>
+            </cfdi:Impuestos>
+        </cfdi:Concepto>
+    </cfdi:Conceptos>
+    <cfdi:Impuestos TotalImpuestosTrasladados="2073.60">
+        <cfdi:Traslados>
+            <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="2073.6"/>
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
+    <cfdi:Complemento>
+        <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="aeb663d7-3f90-4adc-8cd5-c0becf05ca46" RfcProvCertif="SNF171020F3A" FechaTimbrado="2021-01-18T13:59:03" SelloCFD="ayG3iXyFduZY5PR70TSy9LaK2G+y33XuS1xgKblppL9oIvChQtTgelSx4DWQSeGLvTEzpY2bhndA8Uxk9rM4NOhZxc0ywcZa705agVpbQ71i03MOQPY0Aqj+hWSjudxWJlJWm6ZY/uvvLdzk/Sw7YSL5WPWX7hJZqD4wP+EZnTy0HKc0ZXunnhTDbG/e33ZKFcCDI6pHUkRRbDJ8bXdPP4UDKPpMAKCgS3XhKYMvA4pc9esRhHdokTxm39+Jvlkrywu5EPRuPEph1MXZny5lDHWW1yT/5YOyTyg+Yn1ZIm44cOpTUrQX1fzJXrgtvCsC4IuTKGvT0lEUacU0Sha3lQ==" NoCertificadoSAT="00001000000414211380" SelloSAT="I+dViIcMYRHYOmAU/p0S+mZB9uQaX/TH53muKm6LR9rDJF//lhIN4S98ii+0+f+uC79qM1aCHPqPB2BxXhdPhOFh5raCKCxYpkK4AVAXjG/4b5R/h255U5Ex3vBZsj/Bg4sH1Dc7sWjhGld9Y7a1Grrzub4XM450xiY7sO2xLaPUvjAzpaJ2rgRIvItFL3CYunJp1DcFasP3wQDnIgX097p0GX4i6HbgEQzJXrkQiH7tzSC8lomzGENi/Tpa0qzkAQfHV0+2Fk4AzEHH7rpJowLnVCgQvFc7DrTiWA4FFgMFK2ugyIJ2XUU+CFHtTAkk5HT+XPGtVzCmMHvQkVx5YA=="/>
+    </cfdi:Complemento><cfdi:Addenda>
+        <ns4:diverza version="1.1">
+            <ns4:generales tipoDocumento="Factura" totalConLetra="Quince mil treinta y tres  Pesos 60/100 MXN" observaciones=" TUA del 8 al 15 de ENERO 2021"/>
+            <ns4:receptor>
+                <ns4:datosContactoR emailContacto="cxp@ale.mx,n.almeyda@ale.mx,a.camargo@ale.mx"/>
+            </ns4:receptor>
+            <ns4:complemento>
+                <ns4:datosExtra atributo="Link" valor="https://transfer.oma.aero/login"/>
+            </ns4:complemento>
+        </ns4:diverza>
+    </cfdi:Addenda>
+</cfdi:Comprobante>

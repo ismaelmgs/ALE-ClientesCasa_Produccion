@@ -1,0 +1,88 @@
+\\Mac\Home\Documents\Visual Studio 2013\Projects\ClientesCasa\ClientesCasa\obj\Debug\ClientesCasa.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\Visual Studio 2013\Projects\ClientesCasa\ClientesCasa\bin\ClientesCasa.dll.config
+\\Mac\Home\Documents\Visual Studio 2013\Projects\ClientesCasa\ClientesCasa\bin\ClientesCasa.dll
+\\Mac\Home\Documents\Visual Studio 2013\Projects\ClientesCasa\ClientesCasa\bin\ClientesCasa.pdb
+\\Mac\Home\Documents\Visual Studio 2013\Projects\ClientesCasa\ClientesCasa\bin\NucleoBase.dll
+\\Mac\Home\Documents\Visual Studio 2013\Projects\ClientesCasa\ClientesCasa\obj\Debug\ClientesCasa.dll
+\\Mac\Home\Documents\Visual Studio 2013\Projects\ClientesCasa\ClientesCasa\obj\Debug\ClientesCasa.pdb
+C:\clientes_casa2\trunk\ClientesCasa\bin\ClientesCasa.dll.config
+C:\clientes_casa2\trunk\ClientesCasa\bin\ClientesCasa.dll
+C:\clientes_casa2\trunk\ClientesCasa\bin\ClientesCasa.pdb
+C:\clientes_casa2\trunk\ClientesCasa\obj\Debug\Interop.SAPbobsCOM.dll
+C:\clientes_casa2\trunk\ClientesCasa\obj\Debug\ClientesCasa.csproj.ResolveComReference.cache
+C:\clientes_casa2\trunk\ClientesCasa\obj\Debug\ClientesCasa.csproj.CoreCompileInputs.cache
+C:\clientes_casa2\trunk\ClientesCasa\obj\Debug\ClientesCasa.dll
+C:\clientes_casa2\trunk\ClientesCasa\obj\Debug\ClientesCasa.pdb
+C:\clientes_casa2\trunk\ClientesCasa\obj\Debug\ClientesCasa.csprojResolveAssemblyReference.cache
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\bin\ClientesCasa.dll.config
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\bin\ClientesCasa.dll
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\bin\ClientesCasa.pdb
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\obj\Debug\ClientesCasa.csprojAssemblyReference.cache
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\obj\Debug\Interop.SAPbobsCOM.dll
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\obj\Debug\ClientesCasa.csproj.ResolveComReference.cache
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\obj\Debug\ClientesCasa.csproj.CoreCompileInputs.cache
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\obj\Debug\ClientesCasa.csproj.CopyComplete
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\obj\Debug\ClientesCasa.dll
+C:\Users\jimmy\Documents\PROYECTOS MIT\ClientesCasa\trunk\ClientesCasa\obj\Debug\ClientesCasa.pdb
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\bin\ClientesCasa.dll.config
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\bin\ClientesCasa.dll
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\bin\ClientesCasa.pdb
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\obj\Debug\ClientesCasa.csprojAssemblyReference.cache
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\obj\Debug\Interop.SAPbobsCOM.dll
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\obj\Debug\ClientesCasa.csproj.ResolveComReference.cache
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\obj\Debug\ClientesCasa.csproj.CoreCompileInputs.cache
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\obj\Debug\ClientesCasa.csproj.CopyComplete
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\obj\Debug\ClientesCasa.dll
+E:\MORVEL\ALE\Cliente_casa_Prod\ClientesCasa\obj\Debug\ClientesCasa.pdb
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csprojAssemblyReference.cache
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\obj\Debug\Interop.SAPbobsCOM.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csproj.ResolveComReference.cache
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csproj.CoreCompileInputs.cache
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.pdb
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\ClientesCasa.dll.config
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\ClientesCasa.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\ClientesCasa.pdb
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\stdole.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csproj.CopyComplete
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\ClientesCasa.dll.config
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\ClientesCasa.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\ClientesCasa.pdb
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\stdole.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csprojAssemblyReference.cache
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\obj\Debug\Interop.SAPbobsCOM.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csproj.ResolveComReference.cache
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csproj.CoreCompileInputs.cache
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.csproj.CopyComplete
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\obj\Debug\ClientesCasa.pdb
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.CrystalReports.Engine.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportSource.dll
+E:\DESARROLLOS\PRODUCCION\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.Shared.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.CrystalReports.Engine.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.ReportSource.dll
+E:\AerolineasEjecutivas\Codigos\ClientesCasa_Produccion\CientesCasa\bin\CrystalDecisions.Shared.dll
