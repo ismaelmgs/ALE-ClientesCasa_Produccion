@@ -32,6 +32,12 @@ namespace ClientesCasa.Presenter
         protected override void NewObj_Presenter(object sender, EventArgs e)
         {
             string sRes = oIGesCat.DBInsertaCorteMensualPorContrato(oIView.sClaveContrato, oIView.iMes, oIView.iAnio);
+            if (sRes != string.Empty)
+            {
+                oIView.InhabilitaBoton();
+                oIView.MostrarMensaje("Se guardo la información correctamente.", "Aviso");
+                
+            }
         }
     }
 }
