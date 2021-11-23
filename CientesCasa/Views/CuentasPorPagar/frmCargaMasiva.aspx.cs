@@ -3954,8 +3954,8 @@ namespace ClientesCasa.Views.CuentasPorPagar
                     dtDatosFac.Columns.Add("Fecha/Hora ini", typeof(string));
                     dtDatosFac.Columns.Add("Importe", typeof(string));
                     dtDatosFac.Columns.Add("Lugar", typeof(string));
-
                     dtDatosFac.Columns.Add("M3", typeof(string)); //Cantidad
+
 
                     dtFilasTexto.Columns.Add("LineasArchivo", typeof(string));
 
@@ -3987,7 +3987,7 @@ namespace ClientesCasa.Views.CuentasPorPagar
                             {
                                 sArrFac = dtFilasTexto.Rows[i][0].S().Split('|');
 
-                                string[] arrCols = { "Aeropuerto", "Fecha Factura", "Concepto", "Matricula", "Fecha/Hora ini", "Importe", "M3" };
+                                string[] arrCols = { "Aeropuerto", "Fecha Factura", "Concepto", "Matricula", "Fecha/Hora ini", "Importe", "Litros" };
 
                                 for (int x = 0; x < sArrFac.Length; x++)
                                 {
@@ -4015,7 +4015,7 @@ namespace ClientesCasa.Views.CuentasPorPagar
                                         if (sArrFac[x] == arrCols[5] || sArrFac[x] == "I")
                                             arrInt[5] = x;
                                     //Cantidad
-                                    if (sArrFac[x].IndexOf("M3") != -1)
+                                    if (sArrFac[x].IndexOf("Litros") != -1)
                                         if (sArrFac[x] == arrCols[6])
                                             arrInt[6] = x;
                                 }
@@ -4718,7 +4718,8 @@ namespace ClientesCasa.Views.CuentasPorPagar
 
                         if (fRows[x][3].S() == "TURBOSINA" || fRows[x][3].S() == "turbosina")
                         {
-                            dTotalCantidad = fRows[x]["M3"].S().Db() * 1000;
+                            //dTotalCantidad = fRows[x]["M3"].S().Db() * 1000;
+                            dTotalCantidad = fRows[x]["M3"].S().Db();
                         }
                         else
                             dTotalCantidad = 1;
