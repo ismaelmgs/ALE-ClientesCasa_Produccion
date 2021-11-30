@@ -261,8 +261,8 @@ namespace ClientesCasa.Views.Catalogos
                 }
                 else
                 {
-                    btnCorte.Enabled = true;
                     lblValidacion.Text = string.Empty;
+                    btnCorte.Enabled = true;
                 }
             }
         }

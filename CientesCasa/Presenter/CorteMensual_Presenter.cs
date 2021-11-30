@@ -38,6 +38,10 @@ namespace ClientesCasa.Presenter
                 oIView.MostrarMensaje("Se guardo la información correctamente.", "Aviso");
                 
             }
+            else
+                oIView.MostrarMensaje("Ocurrió un error al guardar el corte mensual.", "Aviso");
+
+
         }
     }
 }
