@@ -204,13 +204,13 @@ namespace ClientesCasa.Views.Gastos
                 for (int i = 0; i < gvMantenimiento.Rows.Count; i++)
                 {
                     DropDownList ddlTipo = (DropDownList)gvMantenimiento.Rows[i].FindControl("ddlTipoGasto");
-                    CascadingDropDown cddTipo = (CascadingDropDown)gvMantenimiento.Rows[i].FindControl("cdlTipoGasto");
+                    //CascadingDropDown cddTipo = (CascadingDropDown)gvMantenimiento.Rows[i].FindControl("cdlTipoGasto");
                     DropDownList ddlAcu = (DropDownList)gvMantenimiento.Rows[i].FindControl("ddlAcumulado1");
                     CascadingDropDown cddAcu = (CascadingDropDown)gvMantenimiento.Rows[i].FindControl("cdlAmpliado");
 
                     if (dt.Rows[i]["TipoGasto"].S() != "")
                     {
-                        cddTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
+                        //cddTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
                         ddlTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
 
                         //cddAcu.SelectedValue = dt.Rows[i]["AmpliadoGasto"].S();
@@ -280,13 +280,13 @@ namespace ClientesCasa.Views.Gastos
                 for (int i = 0; i < gvMantenimientoUSA.Rows.Count; i++)
                 {
                     DropDownList ddlTipo = (DropDownList)gvMantenimientoUSA.Rows[i].FindControl("ddlTipoGasto");
-                    CascadingDropDown cddTipo = (CascadingDropDown)gvMantenimientoUSA.Rows[i].FindControl("cdlTipoGasto");
+                    //CascadingDropDown cddTipo = (CascadingDropDown)gvMantenimientoUSA.Rows[i].FindControl("cdlTipoGasto");
                     DropDownList ddlAcu = (DropDownList)gvMantenimientoUSA.Rows[i].FindControl("ddlAcumulado1");
                     CascadingDropDown cddAcu = (CascadingDropDown)gvMantenimientoUSA.Rows[i].FindControl("cdlAmpliado");
 
                     if (dt.Rows[i]["TipoGasto"].S() != "")
                     {
-                        cddTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
+                        //cddTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
                         ddlTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
 
                         //cddAcu.SelectedValue = dt.Rows[i]["AmpliadoGasto"].S();
@@ -680,9 +680,9 @@ namespace ClientesCasa.Views.Gastos
                     dSumaImporteO += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "ImporteModificado"));
 
                     DropDownList ddlTipoGasto = (DropDownList)e.Row.FindControl("ddlTipoGasto");
-                    DropDownList ddlAcumulado1 = (DropDownList)e.Row.FindControl("ddlAcumulado1");
+                    //DropDownList ddlAcumulado1 = (DropDownList)e.Row.FindControl("ddlAcumulado1");
 
-                    if (ddlTipoGasto != null && ddlAcumulado1 != null)
+                    if (ddlTipoGasto != null)
                     {
                         ddlTipoGasto.DataSource = dtTiposGasto;
                         ddlTipoGasto.DataTextField = "Descripcion";
@@ -692,8 +692,8 @@ namespace ClientesCasa.Views.Gastos
                         if (dt.Rows[e.Row.RowIndex]["TipoGasto"].S() != "")
                         {
                             ddlTipoGasto.SelectedValue = dt.Rows[e.Row.RowIndex]["TipoGasto"].S();
-                            CargaComboAcumuladoGasto(ddlAcumulado1, ObtieneAumuladosGasto1(dt.Rows[e.Row.RowIndex]["TipoGasto"].S()));
-                            ddlAcumulado1.SelectedValue = dt.Rows[e.Row.RowIndex]["AmpliadoGasto"].S();
+                            //CargaComboAcumuladoGasto(ddlAcumulado1, ObtieneAumuladosGasto1(dt.Rows[e.Row.RowIndex]["TipoGasto"].S()));
+                            //ddlAcumulado1.SelectedValue = dt.Rows[e.Row.RowIndex]["AmpliadoGasto"].S();
                         }
                     }
 
@@ -1953,7 +1953,7 @@ namespace ClientesCasa.Views.Gastos
 
                         if (oG.iNumeroPierna == 0)
                         {
-                            Label lblNoPierna = (Label)gvMantenimiento.Rows[i].FindControl("lblNoPierna");
+                            Label lblNoPierna = (Label)gvMantenimientoUSA.Rows[i].FindControl("lblNoPierna");
                             if (lblNoPierna.Text != null)
                                 oG.iNumeroPierna = lblNoPierna.Text.S().I();
                         }
@@ -1979,7 +1979,7 @@ namespace ClientesCasa.Views.Gastos
             }
             catch (Exception ex)
             {
-
+                 string strError = ex.ToString();
             }
         }
         public void MostrarMensaje(string sMensaje, string sCaption)

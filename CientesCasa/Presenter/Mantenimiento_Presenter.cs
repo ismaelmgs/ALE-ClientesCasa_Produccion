@@ -102,19 +102,27 @@ namespace ClientesCasa.Presenter
                             string sName = row["ClaveContrato"].S();
                             dtMEX.Columns.Add("ddl" + sName);
                             dtUSA.Columns.Add("ddl" + sName);
-                        }
 
-                        foreach (DataRow row in dsCon.Tables[2].Rows)
-                        {
-                            string sName = row["ClaveContrato"].S();
                             dtMEX.Columns.Add(sName);
                             dtUSA.Columns.Add(sName);
                         }
 
+                        DataTable dtT = oIGesCat.DBGetObtieneImportesTodos_Gastos(oIView.sMatricula , oIView.iAnio, oIView.iMes);
+
+                        //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO Obtiene porcentaje para MXN --");
                         foreach (DataRow row in dtMEX.Rows)
                         {
-                            DataTable dt = oIGesCat.DBGetObtieneImportesPorGastosYContrato(row["IdGasto"].S().L(), Utils.GetUser);
+                            
+                            //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO Obtiene Importes Por Gastos y Contrato MXN --");
+                            string strIdGasto = row["IdGasto"].S();
+                            DataRow[] dr = dtT.Select("IdGasto=" + strIdGasto);
+                            DataTable dt = dtT.Clone();
+                            foreach (DataRow d in dr)
+                                dt.ImportRow(d);
 
+
+                            //dt = oIGesCat.DBGetObtieneImportesPorGastosYContrato(row["IdGasto"].S().L(), Utils.GetUser);
+                            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN Obtiene Importes Por Gastos y Contrato MXN --");
                             for (int i = 0; i < dsCon.Tables[2].Rows.Count; i++)
                             {
                                 if (dt.Rows.Count > 0)
@@ -138,8 +146,15 @@ namespace ClientesCasa.Presenter
 
                         foreach (DataRow row in dtUSA.Rows)
                         {
-                            DataTable dt = oIGesCat.DBGetObtieneImportesPorGastosYContrato(row["IdGasto"].S().L(), Utils.GetUser);
+                            string strIdGastoUSA = row["IdGasto"].S();
+                            DataRow[] drUSA = dtT.Select("IdGasto=" + strIdGastoUSA);
+                            DataTable dt = dtT.Clone();
+                            foreach (DataRow d in drUSA)
+                                dt.ImportRow(d);
 
+                            //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO Obtiene Importes Por Gastos y Contrato USD --");
+                            //DataTable dt = oIGesCat.DBGetObtieneImportesPorGastosYContrato(row["IdGasto"].S().L(), Utils.GetUser);
+                            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN Obtiene Importes Por Gastos y Contrato USD --");
                             for (int i = 0; i < dsCon.Tables[2].Rows.Count; i++)
                             {
                                 if (dt.Rows.Count > 0)

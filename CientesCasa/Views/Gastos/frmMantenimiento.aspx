@@ -278,7 +278,6 @@
                                                                                             <asp:UpdatePanel ID="upaDetGastosMXN" runat="server" UpdateMode="Conditional">
                                                                                                 <ContentTemplate>
                                                                                                     <div id="div<%# Eval("IdGasto") %>" style="text-align: left">
-
                                                                                                         <asp:GridView ID="gvDetalleGastoMXN" runat="server" AutoGenerateColumns="false" Width="80%" Style="margin: 0 auto; border: 2px solid #547ba6;">
                                                                                                             <Columns>
                                                                                                                 <asp:BoundField DataField="LegId" HeaderText="No pierna" />
@@ -365,10 +364,10 @@
                                                                                     <ItemTemplate>
                                                                                         <asp:DropDownList ID="ddlTipoGasto" runat="server" Width="100px" EnableViewState="true">
                                                                                         </asp:DropDownList>
-                                                                                        <cc1:CascadingDropDown ID="cdlTipoGasto" TargetControlID="ddlTipoGasto" PromptText="Seleccione" LoadingText="Cargando..."
+                                                                                        <%--<cc1:CascadingDropDown ID="cdlTipoGasto" TargetControlID="ddlTipoGasto" PromptText="Seleccione" LoadingText="Cargando..."
                                                                                             PromptValue="Descripcion" ServicePath="ServiceCS.asmx" ServiceMethod="GetTipoGasto" runat="server"
                                                                                             Category="TipoGasto" EnableViewState="true" />
-                                                                                        <asp:HiddenField ID="hfTipoGasto" runat="server" />
+                                                                                        <asp:HiddenField ID="hfTipoGasto" runat="server" />--%>
                                                                                     </ItemTemplate>
                                                                                 </asp:TemplateField>
 
@@ -550,9 +549,9 @@
                                                                                 <ItemTemplate>
                                                                                     <asp:DropDownList ID="ddlTipoGasto" runat="server" Width="100px" EnableViewState="true">
                                                                                     </asp:DropDownList>
-                                                                                    <cc1:CascadingDropDown ID="cdlTipoGasto" TargetControlID="ddlTipoGasto" PromptText="Seleccione" LoadingText="Cargando..."
+                                                                                    <%--<cc1:CascadingDropDown ID="cdlTipoGasto" TargetControlID="ddlTipoGasto" PromptText="Seleccione" LoadingText="Cargando..."
                                                                                         PromptValue="Descripcion" ServicePath="ServiceCS.asmx" ServiceMethod="GetTipoGasto" runat="server"
-                                                                                        Category="TipoGasto" EnableViewState="true" />
+                                                                                        Category="TipoGasto" EnableViewState="true" />--%>
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateField>
 
