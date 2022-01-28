@@ -19,12 +19,13 @@ using System.Threading.Tasks;
 
 namespace ClientesCasa.Views.Gastos
 {
-    public partial class frmMantenimiento : System.Web.UI.Page, IViewMantenimiento
+    public partial class frmMantenimientoUsd : System.Web.UI.Page, IViewMantenimiento
     {
 
         #region EVENTOS
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> ** INICIO Load   -------------------------------------------------");
             //se inicia el presentador
             oPresenter = new Mantenimiento_Presenter(this, new DBMantenimiento());
 
@@ -36,13 +37,17 @@ namespace ClientesCasa.Views.Gastos
                 if (eGetCargaInicial != null)
                     eGetCargaInicial(sender, e);
             }
+
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN Load   -------------------------------------------------");
         }
         protected void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             try
             {
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> ** INICIO busqueda de clientes");
                 if (eSearchObj != null)
                     eSearchObj(sender, e);
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN busqueda de clientes");
             }
             catch (Exception ex)
             {
@@ -87,6 +92,7 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> Selecciona la matricula ************");
                 //dtGastosMex = null;
                 lstCliente = new List<string>();
                 string sMatriculag = string.Empty;
@@ -129,6 +135,7 @@ namespace ClientesCasa.Views.Gastos
 
                         sContrato = sContratog;
                         mpePeriodo.Show();
+                        //Utils.GuardarBitacora("MANTTO_DATOS  --> Muestra el Calendario");
                     }
                 }
             }
@@ -141,6 +148,7 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> ** INICIO Selecciona del periodo a consultar ************");
                 Page.Validate("VPeriodo");
                 if (Page.IsValid)
                 {
@@ -165,11 +173,11 @@ namespace ClientesCasa.Views.Gastos
                     lblReqAnio.Text = iAnio.S();
 
                     pnlActualizar.Visible = true;
-                    pnlRubros.Visible = true;
-                    //pnlRubrosUSA.Visible = true;
+                    //pnlRubros.Visible = true;
+                    pnlRubrosUSA.Visible = true;
 
-                    if (eObjSelected != null)
-                        eObjSelected(sender, e);
+                    if (eObjSelectedUSD != null)
+                        eObjSelectedUSD(sender, e);
 
                     //lblCentroCostosMEX.Text = "Centro de costos: " + sCentroCostos;
 
@@ -178,6 +186,7 @@ namespace ClientesCasa.Views.Gastos
                 }
                 else
                     mpePeriodo.Show();
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN muestra resultados en pantalla");
             }
             catch (Exception ex)
             {
@@ -188,8 +197,8 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
-                if (eUpaGastos != null)
-                    eUpaGastos(sender, e);
+                if (eUpaGastosUSD != null)
+                    eUpaGastosUSD(sender, e);
 
                 if (eSearchObj != null)
                     eSearchObj(sender, e);
@@ -203,74 +212,74 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
-                DataTable dt = dtGastosMEX;
+                //DataTable dt = dtGastosMEX;
 
-                for (int i = 0; i < gvMantenimiento.Rows.Count; i++)
-                {
-                    DropDownList ddlTipo = (DropDownList)gvMantenimiento.Rows[i].FindControl("ddlTipoGasto");
-                    //CascadingDropDown cddTipo = (CascadingDropDown)gvMantenimiento.Rows[i].FindControl("cdlTipoGasto");
-                    DropDownList ddlAcu = (DropDownList)gvMantenimiento.Rows[i].FindControl("ddlAcumulado1");
-                    CascadingDropDown cddAcu = (CascadingDropDown)gvMantenimiento.Rows[i].FindControl("cdlAmpliado");
+                //for (int i = 0; i < gvMantenimiento.Rows.Count; i++)
+                //{
+                //    DropDownList ddlTipo = (DropDownList)gvMantenimiento.Rows[i].FindControl("ddlTipoGasto");
+                //    //CascadingDropDown cddTipo = (CascadingDropDown)gvMantenimiento.Rows[i].FindControl("cdlTipoGasto");
+                //    DropDownList ddlAcu = (DropDownList)gvMantenimiento.Rows[i].FindControl("ddlAcumulado1");
+                //    CascadingDropDown cddAcu = (CascadingDropDown)gvMantenimiento.Rows[i].FindControl("cdlAmpliado");
 
-                    if (dt.Rows[i]["TipoGasto"].S() != "")
-                    {
-                        //cddTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
-                        ddlTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
+                //    if (dt.Rows[i]["TipoGasto"].S() != "")
+                //    {
+                //        //cddTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
+                //        ddlTipo.SelectedValue = dt.Rows[i]["TipoGasto"].S();
 
-                        //cddAcu.SelectedValue = dt.Rows[i]["AmpliadoGasto"].S();
+                //        //cddAcu.SelectedValue = dt.Rows[i]["AmpliadoGasto"].S();
 
-                        //if (dt.Rows[i]["AmpliadoGasto"].S() != "0")
-                        //    ddlAcu.SelectedValue = dt.Rows[i]["AmpliadoGasto"].S();
-                    }
-                }
-
-
-
-                DataTable dtTotalCon = new DataTable();
-                DataTable dtIndex = new DataTable();
-                for (int i = 0; i < dtContratos.Rows.Count; i++)
-                {
-                    dtTotalCon.Columns.Add(dtContratos.Rows[i]["ClaveContrato"].S(), typeof(decimal));
-                }
-
-                dtIndex = dtTotalCon.Clone();
-                DataRow drImpCon = dtTotalCon.NewRow();
-
-                for (int i = 0; i < dtContratos.Rows.Count; i++)
-                {
-                    decimal dImp = 0;
-                    foreach (DataRow drImp in dt.Rows)
-                    {
-                        dImp += drImp[dtContratos.Rows[i]["ClaveContrato"].S()].S().D();
-                    }
-
-                    drImpCon[dtContratos.Rows[i]["ClaveContrato"].S()] = dImp;
-                }
-
-                dtTotalCon.Rows.Add(drImpCon);
+                //        //if (dt.Rows[i]["AmpliadoGasto"].S() != "0")
+                //        //    ddlAcu.SelectedValue = dt.Rows[i]["AmpliadoGasto"].S();
+                //    }
+                //}
 
 
-                DataRow rowInd = dtIndex.NewRow();
-                for (int i = 0; i < gvMantenimiento.HeaderRow.Cells.Count; i++)
-                {
-                    foreach (DataRow dr in dtContratos.Rows)
-                    {
-                        if (gvMantenimiento.HeaderRow.Cells[i].Text.S() == dr["ClaveContrato"].S())
-                        {
-                            rowInd[dr["ClaveContrato"].S()] = i.S();
-                        }
-                    }
-                }
 
-                dtIndex.Rows.Add(rowInd);
+                //DataTable dtTotalCon = new DataTable();
+                //DataTable dtIndex = new DataTable();
+                //for (int i = 0; i < dtContratos.Rows.Count; i++)
+                //{
+                //    dtTotalCon.Columns.Add(dtContratos.Rows[i]["ClaveContrato"].S(), typeof(decimal));
+                //}
 
-                foreach (DataRow row in dtContratos.Rows)
-                {
-                    gvMantenimiento.FooterRow.Cells[dtIndex.Rows[0][row["ClaveContrato"].S()].S().I()].Text = dtTotalCon.Rows[0][row["ClaveContrato"].S()].S().D().ToString("c");
-                    gvMantenimiento.FooterRow.Cells[dtIndex.Rows[0][row["ClaveContrato"].S()].S().I()].HorizontalAlign = HorizontalAlign.Center;
-                }
+                //dtIndex = dtTotalCon.Clone();
+                //DataRow drImpCon = dtTotalCon.NewRow();
 
-                GC.Collect();
+                //for (int i = 0; i < dtContratos.Rows.Count; i++)
+                //{
+                //    decimal dImp = 0;
+                //    foreach (DataRow drImp in dt.Rows)
+                //    {
+                //        dImp += drImp[dtContratos.Rows[i]["ClaveContrato"].S()].S().D();
+                //    }
+
+                //    drImpCon[dtContratos.Rows[i]["ClaveContrato"].S()] = dImp;
+                //}
+
+                //dtTotalCon.Rows.Add(drImpCon);
+
+
+                //DataRow rowInd = dtIndex.NewRow();
+                //for (int i = 0; i < gvMantenimiento.HeaderRow.Cells.Count; i++)
+                //{
+                //    foreach (DataRow dr in dtContratos.Rows)
+                //    {
+                //        if (gvMantenimiento.HeaderRow.Cells[i].Text.S() == dr["ClaveContrato"].S())
+                //        {
+                //            rowInd[dr["ClaveContrato"].S()] = i.S();
+                //        }
+                //    }
+                //}
+
+                //dtIndex.Rows.Add(rowInd);
+
+                //foreach (DataRow row in dtContratos.Rows)
+                //{
+                //    gvMantenimiento.FooterRow.Cells[dtIndex.Rows[0][row["ClaveContrato"].S()].S().I()].Text = dtTotalCon.Rows[0][row["ClaveContrato"].S()].S().D().ToString("c");
+                //    gvMantenimiento.FooterRow.Cells[dtIndex.Rows[0][row["ClaveContrato"].S()].S().I()].HorizontalAlign = HorizontalAlign.Center;
+                //}
+
+                //GC.Collect();
             }
             catch (Exception ex)
             {
@@ -416,8 +425,8 @@ namespace ClientesCasa.Views.Gastos
                             if (eDeleteObj != null)
                                 eDeleteObj(sender, e);
 
-                            if (eObjSelected != null)
-                                eObjSelected(sender, e);
+                            if (eObjSelectedUSD != null)
+                                eObjSelectedUSD(sender, e);
 
                             upaGastosDolares.Update();
                         }
@@ -646,6 +655,7 @@ namespace ClientesCasa.Views.Gastos
         decimal dSumaImporteO = 0;
         protected void gvMantenimiento_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO RowDataBound MXN ---");
             string sRubroSelect = string.Empty;
             string sProvGSelect = string.Empty;
             try
@@ -654,15 +664,16 @@ namespace ClientesCasa.Views.Gastos
                 {
                     DataTable dt = dtGastosMEX;
 
-                    GridView gvDetalle = (GridView)e.Row.FindControl("gvDetalleGastoMXN");
-                    if (gvDetalle != null)
-                    {
-                        DataTable dtD = dt.Clone();
-                        dtD.ImportRow(dt.Rows[e.Row.RowIndex]);
+                    //MOGI 21/01/2022
+                    //GridView gvDetalle = (GridView)e.Row.FindControl("gvDetalleGastoMXN");
+                    //if (gvDetalle != null)
+                    //{
+                    //    DataTable dtD = dt.Clone();
+                    //    dtD.ImportRow(dt.Rows[e.Row.RowIndex]);
                         
-                        gvDetalle.DataSource = dtD;
-                        gvDetalle.DataBind();
-                    }
+                    //    gvDetalle.DataSource = dtD;
+                    //    gvDetalle.DataBind();
+                    //}
 
                     ImageButton btnGastoE = (ImageButton)e.Row.FindControl("btnEliminarMEX");
                     if (btnGastoE != null)
@@ -798,17 +809,20 @@ namespace ClientesCasa.Views.Gastos
             {
 
             }
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN RowDataBound MXN --");
         }
         decimal dSumaImporteUSA = 0;
         decimal dSumaImporteOUSA = 0;
         protected void gvMantenimientoUSA_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO RowDataBound USD ---");
             try
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     DataTable dt = dtGastosUSA;
 
+                    // MOGI 21/01/2022
                     GridView gvDetalle = (GridView)e.Row.FindControl("gvDetalleGastoUSD");
                     if (gvDetalle != null)
                     {
@@ -952,6 +966,7 @@ namespace ClientesCasa.Views.Gastos
             {
 
             }
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN RowDataBound USD --");
         }
         protected void btnBuscarPierna_Click(object sender, EventArgs e)
         {
@@ -1062,11 +1077,11 @@ namespace ClientesCasa.Views.Gastos
                     if (eNewGastoEstimado != null)
                         eNewGastoEstimado(sender, e);
 
-                    if (eObjSelected != null)
-                        eObjSelected(sender, e);
+                    if (eObjSelectedUSD != null)
+                        eObjSelectedUSD(sender, e);
 
-                    upaGridGastosMXN.Update();
-                    //upaGastosDolares.Update();
+                    //upaGridGastosMXN.Update();
+                    upaGastosDolares.Update();
 
                     LimpiaCamposGastoEstimado();
 
@@ -1084,11 +1099,19 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
+               // Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Carga Importes porcentajes");
                 CargaImportePorcentajes(gvMantenimiento);
-                RecuperaGridPesos();
+                //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Carga Importes porcentajes");
 
+                //Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Recupera Grid Pesos");
+                RecuperaGridPesos(); //Se comentan pesos en esta pagina
+                //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Recupera Grid Pesos");
+
+                //Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Valida porcentajes");
                 if (ValidaPorcentajes(gvMantenimiento) != 0)
                 {
+                    //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Valida porcentajes");
+
                     eMoneda = MonedaGasto.Pesos;
                     upaGastosPesos.Update();
                     lblCaption.Text = "Gastos en Pesos";
@@ -1097,6 +1120,7 @@ namespace ClientesCasa.Views.Gastos
                     upaGridGastosMXN.Update();
                     return;
                 }
+                //Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Actualiza grid pesos");
                 string sRes = ActualizaGridPesos();
                 //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Actualiza grid pesos");
 
@@ -1168,10 +1192,10 @@ namespace ClientesCasa.Views.Gastos
                     lblValFechaVlo.Visible = false;
 
                     dtFechaVlo = txtTripPiernas.Text.S().Dt();
-
+                    Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO Consulta Piernas --");
                     if (eSearchLegs != null)
                         eSearchLegs(sender, e);
-
+                    Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO Carga Piernas --");
                     gvPiernas.DataSource = dtLegs;
                     gvPiernas.DataBind();
                 }
@@ -1266,34 +1290,35 @@ namespace ClientesCasa.Views.Gastos
                             //LlenaGridDetalle(gvMantenimiento, iIdFila, dtGastosMEX, "gvDetalleGastoMXN", upa);
 
                             ///////////----------------------------------------
-                            GridView gvDetalle = (GridView)gvMantenimiento.Rows[iIdFila].FindControl("gvDetalleGastoMXN");
-                            
-                            if (gvDetalle != null)
-                            {
-                                DataTable dtD = new DataTable();
-                                dtD.Columns.Add("LegId");
-                                dtD.Columns.Add("Ruta");
-                                dtD.Columns.Add("FechaVuelo");
-                                dtD.Columns.Add("TiempoCalzo");
+                            /////MOGI 21/01/2022
+                            //GridView gvDetalle = (GridView)gvMantenimiento.Rows[iIdFila].FindControl("gvDetalleGastoMXN");
 
-                                DataRow rowD = dtD.NewRow();
-                                rowD["LegId"] = iIdPierna.S();
-                                rowD["Ruta"] = row[0]["Ruta"].S();
-                                rowD["FechaVuelo"] = row[0]["FechaVuelo"].S();
-                                rowD["TiempoCalzo"] = row[0]["TiempoCalzo"].S();
+                            //if (gvDetalle != null)
+                            //{
+                            //    DataTable dtD = new DataTable();
+                            //    dtD.Columns.Add("LegId");
+                            //    dtD.Columns.Add("Ruta");
+                            //    dtD.Columns.Add("FechaVuelo");
+                            //    dtD.Columns.Add("TiempoCalzo");
 
-                                dtD.Rows.Add(rowD);
+                            //    DataRow rowD = dtD.NewRow();
+                            //    rowD["LegId"] = iIdPierna.S();
+                            //    rowD["Ruta"] = row[0]["Ruta"].S();
+                            //    rowD["FechaVuelo"] = row[0]["FechaVuelo"].S();
+                            //    rowD["TiempoCalzo"] = row[0]["TiempoCalzo"].S();
 
-                                gvDetalle.DataSource = dtD;
-                                gvDetalle.DataBind();
+                            //    dtD.Rows.Add(rowD);
 
-                                //gvDetalle.Rows[0].Cells[0].Text = iIdPierna.S();
-                                //gvDetalle.Rows[0].Cells[1].Text = row[0]["Ruta"].S();
-                                //gvDetalle.Rows[0].Cells[2].Text = row[0]["FechaVuelo"].S();
-                                //gvDetalle.Rows[0].Cells[3].Text = row[0]["TiempoCalzo"].S();
+                            //    gvDetalle.DataSource = dtD;
+                            //    gvDetalle.DataBind();
 
-                                //upa.Update();
-                            }
+                            //    //gvDetalle.Rows[0].Cells[0].Text = iIdPierna.S();
+                            //    //gvDetalle.Rows[0].Cells[1].Text = row[0]["Ruta"].S();
+                            //    //gvDetalle.Rows[0].Cells[2].Text = row[0]["FechaVuelo"].S();
+                            //    //gvDetalle.Rows[0].Cells[3].Text = row[0]["TiempoCalzo"].S();
+
+                            //    //upa.Update();
+                            //}
 
                             ////---------------------------------------------------
                             UpdatePanel upaGridDetalle = (UpdatePanel)gvMantenimiento.Rows[iIdFila].FindControl("upaDetGastosMXN");
@@ -1334,13 +1359,14 @@ namespace ClientesCasa.Views.Gastos
 
                     dtVacio.Rows.Add(row);
 
-                    GridView gvDetalle = (GridView)gvMantenimiento.Rows[iIdFila].FindControl("gvDetalleGastoMXN");
-                    if (gvDetalle != null)
-                    {
-                        gvDetalle.DataSource = dtVacio;
-                        gvDetalle.DataBind();
+                    //MOGI 21/01/2022
+                    //GridView gvDetalle = (GridView)gvMantenimiento.Rows[iIdFila].FindControl("gvDetalleGastoMXN");
+                    //if (gvDetalle != null)
+                    //{
+                    //    gvDetalle.DataSource = dtVacio;
+                    //    gvDetalle.DataBind();
 
-                    }
+                    //}
 
                     UpdatePanel upaFechaMXN = (UpdatePanel)gvMantenimiento.Rows[iIdFila].FindControl("upaFechaMXN");
                     if (upaFechaMXN != null)
@@ -1418,7 +1444,8 @@ namespace ClientesCasa.Views.Gastos
                             dtGastosUSA.Rows[iIdFila]["Ruta"] = row[0]["Ruta"].S();
                             dtGastosUSA.Rows[iIdFila]["TiempoCalzo"] = row[0]["TiempoCalzo"].S();
 
-                            LlenaGridDetalle(gvMantenimientoUSA, iIdFila, dtGastosUSA, "gvDetalleGastoUSD", upa);
+                            // MOGI 21/01/2022
+                            //LlenaGridDetalle(gvMantenimientoUSA, iIdFila, dtGastosUSA, "gvDetalleGastoUSD", upa);
 
                             UpdatePanel upaFechaMXN = (UpdatePanel)gvMantenimientoUSA.Rows[iIdFila].FindControl("upaFechaUSD");
                             if (upaFechaMXN != null)
@@ -1457,15 +1484,16 @@ namespace ClientesCasa.Views.Gastos
 
                     dtVacio.Rows.Add(row);
 
-                    GridView gvDetalle = (GridView)gvMantenimientoUSA.Rows[iIdFila].FindControl("gvDetalleGastoUSD");
-                    if (gvDetalle != null)
-                    {
-                        gvDetalle.DataSource = dtVacio;
-                        gvDetalle.DataBind();
+                    // MOGI 21/01/2022
+                    //GridView gvDetalle = (GridView)gvMantenimientoUSA.Rows[iIdFila].FindControl("gvDetalleGastoUSD");
+                    //if (gvDetalle != null)
+                    //{
+                    //    gvDetalle.DataSource = dtVacio;
+                    //    gvDetalle.DataBind();
 
-                    }
+                    //}
                     ////
-                    
+
                     ///
 
 
@@ -1625,8 +1653,8 @@ namespace ClientesCasa.Views.Gastos
         }
         protected void btnActualizarComprobantes_Click(object sender, EventArgs e)
         {
-            if (eUpaComprobanteMXN != null)
-                eUpaComprobanteMXN(sender, e);
+            if (eUpaComprobanteUSD != null)
+                eUpaComprobanteUSD(sender, e);
         }
         #endregion
 
@@ -1649,19 +1677,19 @@ namespace ClientesCasa.Views.Gastos
             {
                 if (ds != null)
                 {
-                    dtGastosMEX = ds.Tables[0];
-                    //dtGastosUSA = ds.Tables[1];
-                    dtGastosUSA = null;
+                    //dtGastosMEX = ds.Tables[0];
+                    dtGastosMEX = null;
+                    dtGastosUSA = ds.Tables[0];
                     dtContratos = ds.Tables[1];
 
-                    gvMantenimiento.DataSource = dtGastosMEX;
-                    gvMantenimiento.DataBind();
+                    //gvMantenimiento.DataSource = ds.Tables[0];
+                    //gvMantenimiento.DataBind();
 
-                    //gvMantenimientoUSA.DataSource = ds.Tables[1];
-                    //gvMantenimientoUSA.DataBind();
+                    gvMantenimientoUSA.DataSource = dtGastosUSA;
+                    gvMantenimientoUSA.DataBind();
 
-                    pnlRubros.Visible = true;
-                    //pnlRubrosUSA.Visible = true;
+                    //pnlRubros.Visible = true;
+                    pnlRubrosUSA.Visible = true;
                 }
                 GC.Collect();
             }
@@ -1819,14 +1847,15 @@ namespace ClientesCasa.Views.Gastos
                         oG.sTipoGasto = ddlTipoGasto.SelectedValue.S();
                         //oG.sAmpliadoGasto = ddlAmpliadoGasto.SelectedValue.S();
 
-                        GridView gvDetMXN = (GridView)gvMantenimiento.Rows[i].FindControl("gvDetalleGastoMXN");
-                        if (gvDetMXN != null)
-                        {
-                            if (gvDetMXN.Rows[0].Cells[0].Text.S() != "&nbsp;" && gvDetMXN.Rows[0].Cells[0].Text.S() != string.Empty)
-                                oG.iNumeroPierna = gvDetMXN.Rows[0].Cells[0].Text.S().I();
-                            else
-                                oG.iNumeroPierna = 0;
-                        }
+                        //MOGI 21/01/2022
+                        //GridView gvDetMXN = (GridView)gvMantenimiento.Rows[i].FindControl("gvDetalleGastoMXN");
+                        //if (gvDetMXN != null)
+                        //{
+                        //    if (gvDetMXN.Rows[0].Cells[0].Text.S() != "&nbsp;" && gvDetMXN.Rows[0].Cells[0].Text.S() != string.Empty)
+                        //        oG.iNumeroPierna = gvDetMXN.Rows[0].Cells[0].Text.S().I();
+                        //    else
+                        //        oG.iNumeroPierna = 0;
+                        //}
 
                         if (oG.iNumeroPierna == 0)
                         {
@@ -1874,13 +1903,16 @@ namespace ClientesCasa.Views.Gastos
                 oLstGastoE = (List<GastoEstimado>)Session["lstGridGastoEstimado"];
                 oLstContratosGasto = (List<MantenimientoGastos>)Session["lstGridMantenimientoGastos"];
 
-
+                //Utils.GuardarBitacora("MANTTO_DATOS  -->        eSaveObj");
                 if (eSaveObj != null)
                     eSaveObj(null, EventArgs.Empty);
 
+
+                //Utils.GuardarBitacora("MANTTO_DATOS  -->        eInsImpGasto");
                 if (eInsImpGasto != null)
                     eInsImpGasto(null, EventArgs.Empty);
 
+                //Utils.GuardarBitacora("MANTTO_DATOS  -->        eObjSelected");
                 if (eObjSelected != null)
                     eObjSelected(null, EventArgs.Empty);
 
@@ -1907,8 +1939,8 @@ namespace ClientesCasa.Views.Gastos
                 if (eInsImpGasto != null)
                     eInsImpGasto(null, EventArgs.Empty);
 
-                if (eObjSelected != null)
-                    eObjSelected(null, EventArgs.Empty);
+                if (eObjSelectedUSD != null)
+                    eObjSelectedUSD(null, EventArgs.Empty);
 
                 return "Los gastos se modificaron correctamente.";
             }
@@ -2337,8 +2369,8 @@ namespace ClientesCasa.Views.Gastos
         public event EventHandler eInsImpGasto;
         public event EventHandler eSearchLegs;
         public event EventHandler eNewGastoEstimado;
-        public event EventHandler eUpaComprobanteMXN;
         public event EventHandler eUpaComprobanteUSD;
+        public event EventHandler eUpaComprobanteMXN;
         public event EventHandler eGetCargaInicial;
         public event EventHandler eObjSelectedUSD;
 

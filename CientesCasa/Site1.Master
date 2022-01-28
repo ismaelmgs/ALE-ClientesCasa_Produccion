@@ -80,7 +80,7 @@
         <div class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header" style="padding-top: 20px; padding-left: 30px;">
-                    <a class="navbar-brand" runat="server" href="~/">
+                    <a class="navbar-brand" runat="server" href="~/frmDefault.aspx">
                         <div style="margin-top: -10px; margin-bottom: -10px; margin-left: -30px;">
                             <asp:Image ID="imLogo" runat="server" ImageUrl="~/Images/logo.png" />
                         </div>
@@ -228,7 +228,8 @@
                 <ul>
                     <li><a href="../../../../ClientesCasa/Views/Gastos/frmComprobanteGastos.aspx">Visor de comprobantes</a></li>
                     <li><a href="../../../../ClientesCasa/Views/Gastos/frmExtraccionGastos.aspx">Extracción de Gastos</a></li>
-                    <li><a href="../../../../ClientesCasa/Views/Gastos/frmMantenimiento.aspx">Mantenimiento de Gastos</a></li>
+                    <li><a href="../../../../ClientesCasa/Views/Gastos/frmMantenimiento.aspx">Mantenimiento de Gastos MXN</a></li>
+                    <li><a href="../../../../ClientesCasa/Views/Gastos/frmMantenimientoUsd.aspx">Mantenimiento de Gastos USD</a></li>
                     <li><a href="../../../../ClientesCasa/Views/Gastos/frmCorteGastos.aspx">Corte Mensual</a></li>
                 </ul>
             </li>

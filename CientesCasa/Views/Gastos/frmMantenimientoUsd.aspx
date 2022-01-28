@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="frmMantenimiento.aspx.cs" EnableEventValidation="false" UICulture="es" Culture="es-MX" Inherits="ClientesCasa.Views.Gastos.frmMantenimiento" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="frmMantenimientoUsd.aspx.cs" EnableEventValidation="false" UICulture="es" Culture="es-MX" Inherits="ClientesCasa.Views.Gastos.frmMantenimientoUsd" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -134,7 +134,7 @@
         <ContentTemplate>
             <asp:Panel ID="Panel1" runat="server">
                 <div style="text-align: left">
-                    <h4>&nbsp;&nbsp;Mantenimiento de datos MXN</h4>
+                    <h4>&nbsp;&nbsp;Mantenimiento de datos USD</h4>
                 </div>
                 <div class="widget-box">
                     <div class="widget-title">
@@ -177,6 +177,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <table style="width: 100%">
                             <tr>
                                 <td>
@@ -194,7 +195,6 @@
                                                 <asp:BoundField DataField="Matricula" HeaderText="Matrícula Aeronave" />
                                             </Columns>
                                             <RowStyle CssClass="rowSelect" />
-
                                         </asp:GridView>
                                     </div>
                                 </td>
@@ -283,14 +283,14 @@
                                                                                             <asp:UpdatePanel ID="upaDetGastosMXN" runat="server" UpdateMode="Conditional">
                                                                                                 <ContentTemplate>
                                                                                                     <div id="div<%# Eval("IdGasto") %>" style="text-align: left">
-                                                                                                        <asp:GridView ID="gvDetalleGastoMXN" runat="server" AutoGenerateColumns="false" Width="80%" Style="margin: 0 auto; border: 2px solid #547ba6;">
+                                                                                                        <%--<asp:GridView ID="gvDetalleGastoMXN" runat="server" AutoGenerateColumns="false" Width="80%" Style="margin: 0 auto; border: 2px solid #547ba6;">
                                                                                                             <Columns>
                                                                                                                 <asp:BoundField DataField="LegId" HeaderText="No pierna" />
                                                                                                                 <asp:BoundField DataField="Ruta" HeaderText="Ruta" />
                                                                                                                 <asp:BoundField DataField="FechaVuelo" HeaderText="Fecha vuelo" />
                                                                                                                 <asp:BoundField DataField="TiempoCalzo" HeaderText="Tiempo calzo" />
                                                                                                             </Columns>
-                                                                                                        </asp:GridView>
+                                                                                                        </asp:GridView>--%>
                                                                                                     </div>
 
                                                                                                 </ContentTemplate>
@@ -1042,6 +1042,16 @@
     </asp:Panel>
 
 
-    
+    <%--<asp:UpdateProgress ID="prgLoadingStatus" runat="server" DynamicLayout="true">
+        <ProgressTemplate>
+            <div id="overlay">
+                <div id="modalprogress">
+                    <div id="theprogress">
+                        <asp:Image ID="imgWaitIcon" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/Images/icons/loading-animated.gif" Width="150" Height="130" />
+                    </div>
+                </div>
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>--%>
 
 </asp:Content>
