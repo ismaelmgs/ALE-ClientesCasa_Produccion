@@ -7,6 +7,8 @@ using NucleoBase.Core;
 using ClientesCasa.Clases;
 using ClientesCasa.Objetos;
 using System.IO;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ClientesCasa.DomainModel
 {
@@ -156,14 +158,45 @@ namespace ClientesCasa.DomainModel
         {
             try
             {
+                
                 foreach (MantenimientoGastos oGasto in oGastos)
                 {
                     oDB_SP.EjecutarSP("[ClientesCasa].[spI_CC_InsertaImporteContratosGasto]", "@IdGasto", oGasto.iIdGasto,
-                                                                                              "@Importe", oGasto.dImporte,
-                                                                                              "@ClaveContrato", oGasto.sContrato,
-                                                                                              "@Porcentaje", oGasto.iPorcentaje,
-                                                                                              "@UsuarioModificacion", oGasto.sUsuario);
+                                                                                                "@Importe", oGasto.dImporte,
+                                                                                                "@ClaveContrato", oGasto.sContrato,
+                                                                                                "@Porcentaje", oGasto.iPorcentaje,
+                                                                                                "@UsuarioModificacion", oGasto.sUsuario);
+                    
                 }
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void DBSetInsertaImportesContratoGastos(DataTable dtGastos)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(oDB_SP.sConexionSQL);
+                connection.Open();
+                using (connection)
+                {
+                    // Create a DataTable with the modified rows.  
+                    //DataTable dtGastosContratos = dtGastos.GetChanges(DataRowState.Added);
+
+                    // Configure the SqlCommand and SqlParameter.  
+                    SqlCommand insertCommand = new SqlCommand("[ClientesCasa].[spI_CC_InsertaImporteContratosGastoTabla]", connection);
+                    insertCommand.CommandType = CommandType.StoredProcedure;
+                    SqlParameter tvpParam = insertCommand.Parameters.AddWithValue("@tvGastos", dtGastos);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+
+                    // Execute the command.  
+                    insertCommand.ExecuteNonQuery();
+                }
+                connection.Close();
             }
             catch (Exception ex)
             {

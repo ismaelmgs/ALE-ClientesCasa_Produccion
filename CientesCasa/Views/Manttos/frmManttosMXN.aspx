@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="frmMantenimientoUsd.aspx.cs" Inherits="ClientesCasa.Views.Gastos.frmMantenimientoUsd"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="frmManttosMXN.aspx.cs" Inherits="ClientesCasa.Views.Manttos.frmManttosMXN"
     EnableEventValidation="false" UICulture="es" Culture="es-MX" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -37,18 +37,6 @@
         }
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $("[src*=read_more]").live("click", function () {
-            $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
-            $(this).attr("src", "../../Images/icons/not_more.png");
-        });
-        $("[src*=not_more]").live("click", function () {
-            $(this).attr("src", "../../Images/icons/read_more.png");
-            $(this).closest("tr").next().remove();
-        });
-
-    </script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             gridviewScroll();
@@ -122,22 +110,22 @@
             return true;
         }
 
-        <%--function OcultarModalPiernasMXN() {
+        function OcultarModalPiernasMXN() {
             var txtTasa = '<%=txtTripPiernas.ClientID%>';
             txtTasa.value = "";
 
             var modalId = '<%= mpePierna.ClientID%>';
             var modal = $find(modalId);
             modal.hide();
-        }--%>
+        }
 
         function OcultarModalPiernasUSD() {
-            var txtTasa = '<%=txtTrioUSA.ClientID%>';
+            <%--var txtTasa = '<%=txtTrioUSA.ClientID%>';
             txtTasa.value = "";
 
             var modalId = '<%=mpePiernasUSA.ClientID%>';
             var modal = $find(modalId);
-            modal.hide();
+            modal.hide();--%>
         }
 
         function OcultarModalEstimados() {
@@ -153,7 +141,7 @@
 
             <asp:Panel ID="Panel1" runat="server">
                 <div style="text-align: left">
-                    <h4>&nbsp;&nbsp;Mantenimiento de datos USD</h4>
+                    <h4>&nbsp;&nbsp;Mantenimiento de datos MXN</h4>
                 </div>
                 <div class="widget-box">
                     <div class="widget-title">
@@ -205,7 +193,8 @@
                                             <div class="table-responsive" style="margin: 5px;">
                                                 <asp:GridView ID="gvClientes" runat="server" AutoGenerateColumns="False" DataKeyNames="IdContrato"
                                                     AllowPaging="True" Width="100%" CssClass="table table-bordered table-striped table-hover"
-                                                    PageSize="2" OnRowDataBound="gvClientes_RowDataBound" OnPageIndexChanging="gvClientes_PageIndexChanging" OnSelectedIndexChanged="gvClientes_SelectedIndexChanged">
+                                                    PageSize="2" OnRowDataBound="gvClientes_RowDataBound" OnPageIndexChanging="gvClientes_PageIndexChanging" 
+                                                    OnSelectedIndexChanged="gvClientes_SelectedIndexChanged">
                                                     <EmptyDataTemplate>
                                                         No existen Registros para mostrar.
                                                     </EmptyDataTemplate>
@@ -221,7 +210,6 @@
                                         </td>
                                     </tr>
                                 </table>
-
                             </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID="btnBuscarCliente" EventName="Click" />
@@ -256,189 +244,191 @@
                 </table>
             </asp:Panel>
 
-            <asp:Panel ID="pnlRubrosUSA" runat="server" Visible="false">
-                <asp:UpdatePanel ID="upaDolares" runat="server" ChildrenAsTriggers="true" UpdateMode="Conditional">
+            <asp:Panel ID="pnlRubros" runat="server" Visible="false">
+                <asp:UpdatePanel ID="upaGastosPesos" runat="server" ChildrenAsTriggers="true" UpdateMode="Conditional">
                     <ContentTemplate>
                         <div class="widget-box">
                             <div class="widget-title">
                                 <span class="icon"><i class="icon-align-justify"></i></span>
-                                <h5>Gastos en Dolares</h5>
+                                <h5>Gastos en Pesos (Mexicanos)</h5>
                             </div>
                             <div class="widget-content nopadding">
                                 <div class="control-group">
                                     <div class="">
                                         <div style="text-align: right; margin-right: 15px;">
-                                            <asp:Button ID="btnAgregarEstimadoUSA" runat="server" Text="Agregar Gasto Estimado" CssClass="btn btn-success" 
-                                                OnClick="btnAgregarEstimadoUSA_Click" Style="margin-right: 20px !important; width: 180px !important;" />
+                                            <asp:Button ID="btnAgregarEstimado" runat="server" Text="Agregar Gasto Estimado"
+                                                OnClick="btnAgregarEstimado_Click" CssClass="btn btn-success" Style="margin-right: 20px !important; width: 180px !important;" />
                                         </div>
                                         <div style="text-align: center;">
                                             <strong>
-                                                <asp:Label ID="lblClaveClienteUSD" runat="server"></asp:Label></strong><br />
+                                                <asp:Label ID="lblClaveCliente" runat="server"></asp:Label></strong><br />
                                             <strong>
-                                                <asp:Label ID="lblNombreClienteUSD" runat="server"></asp:Label></strong><br />
+                                                <asp:Label ID="lblNombreCliente" runat="server"></asp:Label></strong><br />
                                             <strong>
-                                                <asp:Label ID="lblMatriculaUSD" runat="server"></asp:Label></strong><br />
+                                                <asp:Label ID="lblMatriculaMEX" runat="server"></asp:Label></strong><br />
                                         </div>
-                                        <br />
                                         <div style="text-align: right; margin-right: 15px;">
-                                            <asp:LinkButton ID="lkbExportaUSD" runat="server" Text="Exportar a Excel" OnClick="lkbExportaUSD_Click" CssClass="btn btn-success"
-                                                Font-Underline="false" Style="margin-right: 20px; height: 20px;"></asp:LinkButton>
+                                            <asp:LinkButton ID="lbkExportaMXN" runat="server" Text="Exportar a Excel" OnClick="lbkExportaMXN_Click" CssClass="btn btn-success"
+                                                Font-Underline="false" Style="margin-right: 20px; height: 10px;"></asp:LinkButton>
                                         </div>
                                         <br />
-                                        <div class="table-responsive" style="width: 100%; border: 1px solid #dddddd;">
-                                            <table class="table">
-                                                <tr>
-                                                    <td>
-                                                        <asp:UpdatePanel ID="upaGastosDolares" runat="server" ChildrenAsTriggers="true" UpdateMode="Conditional">
-                                                            <ContentTemplate>
-                                                                <asp:Panel ID="pnlGastosUSA" runat="server" ScrollBars="Auto" style="max-height:600px; overflow-y:auto;">
+                                        <div>
+                                            <div class="table-responsive" style="width: 100%; border: 1px solid #dddddd;">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>
+                                                            <asp:UpdatePanel ID="upaGridGastosMXN" runat="server" ChildrenAsTriggers="true" UpdateMode="Conditional">
+                                                                <ContentTemplate>
 
-                                                                    <asp:GridView ID="gvMantenimientoUSA" runat="server" AutoGenerateColumns="false" ShowFooter="true" AllowPaging="true"
-                                                                        CssClass="table table-bordered table-striped table-hover" DataKeyNames="IdGasto,IdTipoGasto,Comprobante" EnableViewState="true"
-                                                                        OnRowDataBound="gvMantenimientoUSA_RowDataBound" OnRowCommand="gvMantenimientoUSA_RowCommand"
-                                                                        OnRowCreated="gvMantenimientoUSA_RowCreated" OnPreRender="gvMantenimientoUSA_PreRender"
-                                                                        OnPageIndexChanging="gvMantenimientoUSA_PageIndexChanging" PageSize="20">
-                                                                        <EmptyDataTemplate>
-                                                                            No existen Registros.
-                                                                        </EmptyDataTemplate>
-                                                                        <Columns>
-                                                                            <asp:TemplateField HeaderText="Estimado">
-                                                                                <ItemTemplate>
-                                                                                    <asp:ImageButton ID="btnEliminarUSA" runat="server" ToolTip="Elimina un gasto estimado" OnClientClick="return UserDeleteConfirmation();"
-                                                                                        CommandName="Eliminar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ImageUrl="~/Images/icons/delete.png" Width="23" Height="23" Style="margin-left: 25%;" />
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
+                                                                    <asp:Panel ID="pnlRubrosMat" runat="server" ScrollBars="Auto" style="max-height:600px; overflow-y:auto;">
 
-                                                                            <asp:TemplateField HeaderText="Buscar Pierna">
-                                                                                <ItemTemplate>
-                                                                                    <asp:UpdatePanel ID="upaBusquedaPiernaUSD" runat="server" UpdateMode="Conditional">
-                                                                                        <ContentTemplate>
-                                                                                            <asp:ImageButton ID="btnBuscarPiernaUSA" runat="server" OnClick="btnBuscarPierna_Click1" ImageUrl="~/Images/icons/searchdate.png" Width="18" Height="18" ImageAlign="Middle" Style="margin: 0 auto; margin-left: 25%;" />
-                                                                                        </ContentTemplate>
-                                                                                    </asp:UpdatePanel>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="No. Pierna" ItemStyle-HorizontalAlign="Right">
-                                                                                <ItemTemplate>
-                                                                                    <asp:Label ID="lblNumeroPierna" Text='<%# Bind("NumeroPierna") %>' runat="server" Style="display: block; text-align: right;"></asp:Label>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="Fecha Vuelo">
-                                                                                <ItemTemplate>
-                                                                                    <asp:UpdatePanel ID="upaFechaUSD" runat="server" UpdateMode="Conditional">
-                                                                                        <ContentTemplate>
-                                                                                            <asp:Label ID="lblFechaUSD" runat="server" Text='<%# Bind("FechaVuelo") %>'></asp:Label>
-                                                                                        </ContentTemplate>
-                                                                                    </asp:UpdatePanel>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="No.Referencia" SortExpression="Referencia">
-                                                                                <ItemTemplate>
-                                                                                    <asp:UpdatePanel ID="upaLinkRefDlls" runat="server" UpdateMode="Conditional">
-                                                                                        <ContentTemplate>
-                                                                                            <asp:Label ID="lblReferenciaDlls" runat="server" Text='<%# Bind("Referencia") %>' Font-Size="X-Small"></asp:Label>
-                                                                                            <asp:ImageButton ID="imbReferenciaDlls" runat="server" Width="16" Height="16" ImageUrl="~/Images/icons/searchdate.png" CommandName="ViewReference" Style="margin: 0 auto; margin-left: 25%;"
-                                                                                                CommandArgument='<%# Bind("Referencia") %>' ToolTip="De clic para visualizar el documento." Visible="false"></asp:ImageButton>
-                                                                                        </ContentTemplate>
-                                                                                    </asp:UpdatePanel>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="Importe">
-                                                                                <ItemTemplate>
-                                                                                    <asp:TextBox ID="txtImporte" runat="server" Style="width: 70px !important; text-align: right;"></asp:TextBox>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="Importe Original" ItemStyle-HorizontalAlign="Right">
-                                                                                <ItemTemplate>
-                                                                                    <asp:Label ID="lblImporteOriginalUSD" Text='<%# Bind("Importe", "{0:c}") %>' runat="server" Style="display: block; text-align: right;"></asp:Label>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="Fijo / Variable">
-                                                                                <ItemTemplate>
-                                                                                    <asp:DropDownList ID="ddlFijoVar" runat="server" Width="90px">
-                                                                                        <asp:ListItem Text="FIJO" Value="1"></asp:ListItem>
-                                                                                        <asp:ListItem Text="VARIABLE" Value="2"></asp:ListItem>
-                                                                                    </asp:DropDownList>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-                                                                            <asp:TemplateField HeaderText="Rubro">
-                                                                                <ItemTemplate>
-                                                                                    <asp:DropDownList ID="ddlRubro" runat="server" Width="100px"></asp:DropDownList>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="Tipo Gasto">
-                                                                                <ItemTemplate>
-                                                                                    <asp:DropDownList ID="ddlTipoGasto" runat="server" Width="100px" EnableViewState="true">
-                                                                                    </asp:DropDownList>
-                                                                                    <%--<cc1:CascadingDropDown ID="cdlTipoGasto" TargetControlID="ddlTipoGasto" PromptText="Seleccione" LoadingText="Cargando..."
-                                                                                        PromptValue="Descripcion" ServicePath="ServiceCS.asmx" ServiceMethod="GetTipoGasto" runat="server"
-                                                                                        Category="TipoGasto" EnableViewState="true" />--%>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-
-                                                                            <asp:TemplateField HeaderText="Comentarios">
-                                                                                <ItemTemplate>
-                                                                                    <asp:TextBox ID="txtComentarios" runat="server" Width="100px"></asp:TextBox>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-                                                                            <asp:TemplateField HeaderText="Proveedor" HeaderStyle-Width="100px">
+                                                                        <asp:GridView ID="gvMantenimiento" runat="server" AutoGenerateColumns="false" ShowFooter="true" AllowPaging="true" 
+                                                                            CssClass="table table-bordered table-striped table-hover" OnRowDataBound="gvMantenimiento_RowDataBound" EnableViewState="true"
+                                                                            DataKeyNames="IdGasto,IdTipoGasto,Comprobante" OnRowCommand="gvMantenimiento_RowCommand" OnRowCreated="gvMantenimiento_RowCreated"
+                                                                            OnPreRender="gvMantenimiento_PreRender" OnPageIndexChanging="gvMantenimiento_PageIndexChanging" PageSize="20">
+                                                                            <EmptyDataTemplate>
+                                                                                No existen Registros para mostrar.
+                                                                            </EmptyDataTemplate>
+                                                                            <Columns>
+                                                                                <asp:TemplateField HeaderText="Estimado">
                                                                                     <ItemTemplate>
-                                                                                        <asp:Label ID="lblProvUS" runat="server" Text='<%# Bind("Proveedor") %>' Visible="false"></asp:Label>
-                                                                                        <asp:DropDownList ID="ddlProvGUS" runat="server" Width="100px" >
+                                                                                        <asp:ImageButton ID="btnEliminarMEX" runat="server" ToolTip="Elimina un gasto estimado" OnClientClick="return UserDeleteConfirmation();"
+                                                                                            CommandName="Eliminar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ImageUrl="~/Images/icons/delete.png" Width="23" Height="23" Style="margin-left: 25%;" />
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+                                                                                <asp:TemplateField HeaderText="Buscar Pierna">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:UpdatePanel ID="upaBusquedaPiernaMXN" runat="server" UpdateMode="Conditional">
+                                                                                            <ContentTemplate>
+                                                                                                <asp:ImageButton ID="btnBuscarPierna" runat="server" OnClick="btnBuscarPierna_Click" ImageUrl="~/Images/icons/searchdate.png" ToolTip="De clic para buscar una pierna." Width="18" Height="18" Style="margin: 0 auto; margin-left: 25%;" />
+                                                                                            </ContentTemplate>
+                                                                                        </asp:UpdatePanel>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+                                                                                <asp:TemplateField HeaderText="No. Pierna" ItemStyle-HorizontalAlign="Right">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:Label ID="lblNumeroPierna" Text='<%# Bind("NumeroPierna") %>' runat="server" Style="display: block; text-align: right;"></asp:Label>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+
+                                                                                <asp:TemplateField HeaderText="Fecha Vuelo">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:UpdatePanel ID="upaFechaMXN" runat="server" UpdateMode="Conditional">
+                                                                                            <ContentTemplate>
+                                                                                                <asp:Label ID="lblFechaMXN" runat="server" Text='<%# Bind("FechaVuelo") %>'></asp:Label>
+                                                                                            </ContentTemplate>
+                                                                                        </asp:UpdatePanel>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+
+                                                                                <asp:TemplateField HeaderText="No.Referencia" SortExpression="Referencia" ControlStyle-Width="150">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:UpdatePanel ID="upaLinkRefPesos" runat="server" UpdateMode="Conditional">
+                                                                                            <ContentTemplate>
+                                                                                                <asp:Label ID="lblReferenciaPesos" runat="server" Text='<%# Bind("Referencia") %>' Font-Size="X-Small"></asp:Label>
+                                                                                                <asp:ImageButton ID="imbReferenciaPesos" runat="server" Width="16" Height="16" ImageUrl="~/Images/icons/searchdate.png" CommandName="ViewReference" Style="margin: 0 auto; margin-left: 25%;"
+                                                                                                    CommandArgument='<%# Bind("Referencia") %>' ToolTip="De clic para visualizar el documento." Visible="false"></asp:ImageButton>
+                                                                                            </ContentTemplate>
+                                                                                        </asp:UpdatePanel>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+
+                                                                                <asp:TemplateField HeaderText="Importe">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:TextBox ID="txtImporte" runat="server" Style="width: 70px !important; text-align: right;"></asp:TextBox>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+
+                                                                                <asp:TemplateField HeaderText="Importe Original" ItemStyle-HorizontalAlign="Right">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:Label ID="lblImporteOriginal" Text='<%# Bind("Importe", "{0:c}") %>' runat="server" Style="display: block; text-align: right;"></asp:Label>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+
+                                                                                <asp:TemplateField HeaderText="Fijo / Variable">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:DropDownList ID="ddlFijoVar" runat="server" Width="90px">
+                                                                                            <asp:ListItem Text="FIJO" Value="1"></asp:ListItem>
+                                                                                            <asp:ListItem Text="VARIABLE" Value="2"></asp:ListItem>
                                                                                         </asp:DropDownList>
                                                                                     </ItemTemplate>
                                                                                 </asp:TemplateField>
 
-                                                                            <asp:TemplateField ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" FooterStyle-CssClass="ColumnaOculta">
-                                                                                <ItemTemplate>
-                                                                                    <asp:Label ID="lblNoPierna" runat="server"></asp:Label>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
+                                                                                <asp:TemplateField HeaderText="Rubro">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:DropDownList ID="ddlRubro" runat="server" Width="100px"></asp:DropDownList>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
 
-                                                                            <asp:TemplateField HeaderText="Porcentaje">
-                                                                                <ItemTemplate>
-                                                                                    <asp:DropDownList ID="ddlPorcentaje" runat="server" Width="100px" EnableViewState="true" Style="width:80px;">
-                                                                                    </asp:DropDownList>
-                                                                                    <asp:Image ID="imgError" runat="server" ImageUrl="~/Images/icons/error.png" ToolTip="La distribución de porcentaje es incorrecta." Width="16px" Height="16px" Visible="false" />
-                                                                                    <asp:Image ID="imgWarning" runat="server" ImageUrl="~/Images/icons/warning.png" ToolTip="No se ha realizado la distribución del gasto." Width="16px" Height="16px" Visible="false" />
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
-                                                                            <asp:TemplateField HeaderText="Importe">
-                                                                                <ItemTemplate>
-                                                                                    <asp:TextBox ID="txtImporte_2" runat="server" Style="display: block; text-align: right; width:70px;"></asp:TextBox>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
+                                                                                <asp:TemplateField HeaderText="Tipo Gasto">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:DropDownList ID="ddlTipoGasto" runat="server" Width="100px" EnableViewState="true">
+                                                                                        </asp:DropDownList>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
 
-                                                                        </Columns>
-                                                                        <PagerStyle HorizontalAlign="Right" CssClass="GridPager" />
-                                                                    </asp:GridView>
+                                                                                <asp:TemplateField HeaderText="Comentarios">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:TextBox ID="txtComentarios" runat="server" Width="100px"></asp:TextBox>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+                                                                                <asp:TemplateField HeaderText="Proveedor" HeaderStyle-Width="120px">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:Label ID="lblProv" runat="server" Text='<%# Bind("Proveedor") %>' Visible="false"></asp:Label>
+                                                                                        <asp:DropDownList ID="ddlProvG" runat="server" Width="100px" >
+                                                                                        </asp:DropDownList>
+                                                                                        
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
 
-                                                                </asp:Panel>
-                                                            </ContentTemplate>
-                                                        </asp:UpdatePanel>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                                                <asp:TemplateField ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" FooterStyle-CssClass="ColumnaOculta">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:Label ID="lblNoPierna" runat="server"></asp:Label>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+
+
+                                                                                <asp:TemplateField HeaderText="Porcentaje">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:DropDownList ID="ddlPorcentaje" runat="server" Width="100px" EnableViewState="true" Style="width:80px;">
+                                                                                        </asp:DropDownList>
+                                                                                        <asp:Image ID="imgError" runat="server" ImageUrl="~/Images/icons/error.png" ToolTip="La distribución de porcentaje es incorrecta." Width="16px" Height="16px" Visible="false" />
+                                                                                        <asp:Image ID="imgWarning" runat="server" ImageUrl="~/Images/icons/warning.png" ToolTip="No se ha realizado la distribución del gasto." Width="16px" Height="16px" Visible="false" />
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+                                                                                <asp:TemplateField HeaderText="Importe">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:TextBox ID="txtImporte_2" runat="server" Style="display: block; text-align: right; width:70px;"></asp:TextBox>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+
+                                                                            </Columns>
+                                                                            <PagerStyle HorizontalAlign="Right" CssClass="GridPager" />
+                                                                        </asp:GridView>
+
+                                                                    </asp:Panel>
+
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div style="text-align: right; margin-right: 15px;">
+                                                <br />
+                                                <asp:Button ID="btnModificar" runat="server" Text="Guardar" OnClientClick="visible('divMessage');" OnClick="btnModificar_Click" CssClass="btn btn-success" Style="margin-right: 20px;"></asp:Button>
+                                            </div>
                                         </div>
-                                        <br />
-                                        <div style="text-align: right; margin-right: 15px;">
-                                            <asp:Button ID="btnModificar1" runat="server" Text="Guardar" OnClick="btnModificar1_Click" CssClass="btn btn-success" Style="margin-right: 20px;"></asp:Button>
-                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ContentTemplate>
                     <Triggers>
-                        <asp:PostBackTrigger ControlID="lkbExportaUSD" />
-                        <asp:AsyncPostBackTrigger ControlID="btnAgregarEstimadoUSA" EventName="Click" />
+                        <asp:PostBackTrigger ControlID="lbkExportaMXN" />
+                        <asp:AsyncPostBackTrigger ControlID="btnAgregarEstimado" EventName="Click" />
                     </Triggers>
                 </asp:UpdatePanel>
             </asp:Panel>
@@ -494,7 +484,7 @@
                     <tr>
                         <td style="width: 50%">
                             <div style="text-align: right; float: right">
-                                <asp:Button ID="btnAceptarPeriodo" runat="server" Text="Aceptar" OnClientClick="OcultarModal();" 
+                                <asp:Button ID="btnAceptarPeriodo" runat="server" Text="Aceptar" OnClientClick="OcultarModal();"
                                     OnClick="btnAceptarPeriodo_Click" CssClass="btn btn-primary" CausesValidation="false" />
                             </div>
                         </td>
@@ -512,6 +502,130 @@
             </Triggers>
         </asp:UpdatePanel>
     </asp:Panel>
+
+    <%-- Modal de Piernas --%>
+    <asp:HiddenField ID="hdTargetPiernas" runat="server" />
+    <cc1:ModalPopupExtender ID="mpePierna" runat="server" TargetControlID="hdTargetPiernas" CancelControlID="btnCancelarPierna"
+        PopupControlID="pnlPiernasModal" BackgroundCssClass="overlayy">
+    </cc1:ModalPopupExtender>
+    <asp:Panel ID="pnlPiernasModal" runat="server" BorderColor="" BackColor="White" Height="370px"
+        Width="520px" HorizontalAlign="Center" Style="display: none" CssClass="modalrlr">
+        <asp:UpdatePanel ID="upaBuscaPiernas" runat="server">
+            <ContentTemplate>
+                <table style="width: 100%">
+                    <tr>
+                        <td colspan="3">
+                            <h4>
+                                <asp:Label ID="lblTituloPierna" runat="server" Text="Búsqueda de Piernas / Fecha Operación"></asp:Label></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center">
+                            <center>
+                                <asp:RadioButtonList ID="rblTipoFecha" runat="server" RepeatDirection="Horizontal"
+                                    AutoPostBack="true" OnSelectedIndexChanged="rblTipoFecha_SelectedIndexChanged">
+                                    <asp:ListItem Text="Fecha Vuelo" Value="1" Selected="True"></asp:ListItem>
+                                    <asp:ListItem Text="Fecha Operación" Value="2"></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+                <asp:Panel ID="pnlPiernasMXN" runat="server">
+                    <table style="width: 100%">
+                        <tr>
+                            <td width="30%">
+                                <asp:Label ID="lblPierna" runat="server" Text="Fecha:"></asp:Label>
+                            </td>
+                            <td width="30%">
+                                <asp:TextBox ID="txtTripPiernas" runat="server" type="date" placeholder="Fecha de Inicio" Width="80%" CssClass="form-control"></asp:TextBox>
+                                <asp:Label ID="lblReqFechaVlo" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                            </td>
+                            <td width="40%">
+                                <asp:Button ID="btnBuscarPiernas" runat="server" Text="Buscar" CssClass="btn btn-info" OnClick="btnBuscarPiernas_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <asp:Label ID="lblValFechaVlo" runat="server" Text="El campo es requerido." Visible="false" ForeColor="Red"></asp:Label>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <center>
+                                    <asp:Panel ID="pnlPiernas" runat="server" ScrollBars="Auto" Width="90%" Height="200">
+                                        <asp:GridView ID="gvPiernas" runat="server" AutoGenerateColumns="False" Width="100%"
+                                            CssClass="table table-bordered table-striped table-hover" DataKeyNames="LegId">
+                                            <emptydatatemplate>
+                                                No existen registros para mostrar.
+                                            </emptydatatemplate>
+                                            <columns>
+                                                <asp:TemplateField HeaderText=" Seleccione ">
+                                                    <itemtemplate>
+                                                        <asp:RadioButton ID="rbSelecciona" runat="server" OnClick="javascript:Selrdbtn(this.id)" />
+                                                    </itemtemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="AeronaveMatricula" HeaderText="Matricula" />
+                                                <asp:BoundField DataField="VueloClienteId" HeaderText="Clave del cliente" ItemStyle-HorizontalAlign="Left" />
+                                                <asp:BoundField DataField="VueloContratoId" HeaderText="Clave del contrato" />
+                                                <asp:BoundField DataField="Ruta" HeaderText="Ruta" />
+                                                <asp:BoundField DataField="FechaVuelo" HeaderText="Fecha Vuelo" />
+                                            </columns>
+                                        </asp:GridView>
+                                    </asp:Panel>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <asp:Label ID="lblMensajePiernas" runat="server" Text=""></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                <asp:Panel ID="pnlFechaOpeMXN" runat="server" Height="240px" Visible="false">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 40%; text-align: right">Fecha Operación:
+                            </td>
+                            <td style="width: 60%; text-align: left">
+                                <asp:TextBox ID="txtFechaOperacionMXN" runat="server" type="date"
+                                    Width="80%" CssClass="form-control"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                <table style="width: 100%">
+                    <tr>
+                        <td width="50%">
+                            <div style="text-align: right; float: right">
+                                <asp:Button ID="btnAceptarPierna" runat="server" Text="Aceptar" OnClientClick="OcultarModalPiernasMXN();" OnClick="btnAceptarPierna_Click" CssClass="btn btn-primary" />
+                            </div>
+                        </td>
+                        <td width="50%">
+                            <div style="text-align: left; float: left">
+                                <asp:Button ID="btnCancelarPierna" runat="server" Text="Cancelar" OnClientClick="OcultarModalPiernasMXN();" CssClass="btn btn-default" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="btnBuscarPiernas" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="btnCancelarPierna" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+        <asp:UpdateProgress ID="upgBuscarPiernas" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="upaBuscaPiernas">
+            <ProgressTemplate>
+                <div style="text-align: left">
+                    <asp:Label ID="lblProgresBuscarPiernas" runat="server" Text="Por favor espere..." Font-Italic="true"></asp:Label>
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </asp:Panel>
+
 
     <%-- Modal Confirm --%>
     <asp:HiddenField ID="hdTargetConfirm" runat="server" />
@@ -554,135 +668,11 @@
         </asp:UpdatePanel>
     </asp:Panel>
 
-    <%-- Modal de Piernas Dolares --%>
-    <asp:HiddenField ID="hdTargetPiernasUSA" runat="server" />
-    <cc1:ModalPopupExtender ID="mpePiernasUSA" runat="server" TargetControlID="hdTargetPiernasUSA" CancelControlID="btnCancelarPiernaUSA"
-        PopupControlID="pnlPiernasUSA" BackgroundCssClass="overlayy">
-    </cc1:ModalPopupExtender>
-    <asp:Panel ID="pnlPiernasUSA" runat="server" BorderColor="" BackColor="White" Height="370px"
-        Width="520px" HorizontalAlign="Center" Style="display: none" CssClass="modalrlr">
-        <asp:UpdatePanel ID="upaPiernasUSA" runat="server">
-            <ContentTemplate>
-                <table style="width: 100%">
-                    <tr>
-                        <td colspan="3">
-                            <h4>
-                                <asp:Label ID="Label3" runat="server" Text="Búsqueda de Piernas / Fecha Operación"></asp:Label></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align: center">
-                            <center>
-                                <asp:RadioButtonList ID="rblTipoFechaUSA" runat="server" RepeatDirection="Horizontal"
-                                    AutoPostBack="true" OnSelectedIndexChanged="rblTipoFechaUSA_SelectedIndexChanged">
-                                    <asp:ListItem Text="Fecha Vuelo" Value="1" Selected="True"></asp:ListItem>
-                                    <asp:ListItem Text="Fecha Operación" Value="2"></asp:ListItem>
-                                </asp:RadioButtonList>
-                            </center>
-                        </td>
-                    </tr>
-                </table>
-                <asp:Panel ID="pnlBusPiernasUSA" runat="server">
-                    <table style="width: 100%">
-                        <tr>
-                            <td style="width: 30%">
-                                <asp:Label ID="lblTripUSA" runat="server" Text="Fecha:"></asp:Label>
-                            </td>
-                            <td style="width: 30%">
-                                <asp:TextBox ID="txtTrioUSA" runat="server" type="date" placeholder="Fecha de Inicio" Width="80%" CssClass="form-control"></asp:TextBox>
-                                <asp:Label ID="lblReqFechaVloU" runat="server" Text="*" ForeColor="Red"></asp:Label>
-                            </td>
-                            <td style="width: 40%">
-                                <asp:Button ID="btnBuscarPiernasUSA" runat="server" Text="Buscar" CssClass="btn btn-info" OnClick="btnBuscarPiernasUSA_Click" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <asp:Label ID="lblValFechaVloU" runat="server" Text="El campo es requerido." Visible="false" ForeColor="Red"></asp:Label>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <center>
-                                    <asp:Panel ID="pnlPiernasGridUSA" runat="server" ScrollBars="Auto" Width="90%" Height="200">
-                                        <asp:GridView ID="gvPiernasUSA" runat="server" AutoGenerateColumns="False" Width="100%"
-                                            CssClass="table table-bordered table-striped table-hover" DataKeyNames="LegId">
-                                            <emptydatatemplate>
-                                                No existen registros para mostrar.
-                                            </emptydatatemplate>
-                                            <columns>
-                                                <asp:TemplateField HeaderText=" Seleccione ">
-                                                    <itemtemplate>
-                                                        <asp:RadioButton ID="rbSeleccionaUSA" runat="server" OnClick="javascript:Selrdbtn(this.id)" />
-                                                    </itemtemplate>
-                                                </asp:TemplateField>
-                                                <asp:BoundField DataField="AeronaveMatricula" HeaderText="Matricula" />
-                                                <asp:BoundField DataField="VueloClienteId" HeaderText="Clave del cliente" ItemStyle-HorizontalAlign="Left" />
-                                                <asp:BoundField DataField="VueloContratoId" HeaderText="Clave del contrato" />
-                                                <asp:BoundField DataField="Ruta" HeaderText="Ruta" />
-                                                <asp:BoundField DataField="FechaVuelo" HeaderText="Fecha Vuelo" />
-                                            </columns>
-                                        </asp:GridView>
-                                    </asp:Panel>
-                                </center>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <asp:Label ID="lblMensajePiernasUSA" runat="server" Text="" CssClass="validar"></asp:Label>
-                            </td>
-                        </tr>
-                    </table>
-                </asp:Panel>
-                <asp:Panel ID="pnlFechaOpeUSA" runat="server" Height="240px" Visible="false">
-                    <table style="width: 100%">
-                        <tr>
-                            <td style="width: 40%; text-align: right">Fecha Operación:
-                            </td>
-                            <td style="width: 60%; text-align: left">
-                                <asp:TextBox ID="txtFechaOperacionUSA" runat="server" type="date"
-                                    Width="80%" CssClass="form-control"></asp:TextBox>
-                            </td>
-                        </tr>
-                    </table>
-                </asp:Panel>
-                <table style="width: 100%">
-                    <tr>
-                        <td style="width: 50%">
-                            <div style="text-align: right; float: right">
-                                <asp:Button ID="btnAceptarPiernaUSA" runat="server" Text="Aceptar" OnClientClick="OcultarModalPiernasUSD();" OnClick="btnAceptarPiernaUSA_Click" CssClass="btn btn-primary" />
-                            </div>
-                        </td>
-                        <td style="width: 50%">
-                            <div style="text-align: left; float: left">
-                                <asp:Button ID="btnCancelarPiernaUSA" runat="server" Text="Cancelar" OnClientClick="OcultarModalPiernasUSD();" OnClick="btnCancelarPiernaUSA_Click" CssClass="btn btn-default" />
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="btnBuscarPiernasUSA" EventName="Click" />
-                <asp:AsyncPostBackTrigger ControlID="btnAceptarPiernaUSA" EventName="Click" />
-                <asp:AsyncPostBackTrigger ControlID="btnCancelarPiernaUSA" EventName="Click" />
-            </Triggers>
-        </asp:UpdatePanel>
-        <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="upaPiernasUSA">
-            <ProgressTemplate>
-                <div style="text-align: left">
-                    <asp:Label ID="lblProgresBuscarPiernasUSA" runat="server" Text="Por favor espere..." Font-Italic="true"></asp:Label>
-                </div>
-            </ProgressTemplate>
-        </asp:UpdateProgress>
-    </asp:Panel>
-
 
     <%-- Modal de Gastos Estimados --%>
     <asp:HiddenField ID="hdTargetGastosEstimados" runat="server" />
-    <cc1:ModalPopupExtender ID="mpeGastosEstimados" runat="server" TargetControlID="hdTargetGastosEstimados" CancelControlID="btnCancelarEstimado"
-        PopupControlID="pnlGastosEstimados" BackgroundCssClass="overlayy">
+    <cc1:ModalPopupExtender ID="mpeGastosEstimados" runat="server" TargetControlID="hdTargetGastosEstimados" 
+        CancelControlID="btnCancelarEstimado" PopupControlID="pnlGastosEstimados" BackgroundCssClass="overlayy">
     </cc1:ModalPopupExtender>
     <asp:Panel ID="pnlGastosEstimados" runat="server" BorderColor="" BackColor="White" Height="230px"
         Width="400px" HorizontalAlign="Center" Style="display: none" CssClass="modalrlr">

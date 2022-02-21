@@ -228,7 +228,8 @@
                 <ul>
                     <li><a href="../../../../ClientesCasa/Views/Gastos/frmComprobanteGastos.aspx">Visor de comprobantes</a></li>
                     <li><a href="../../../../ClientesCasa/Views/Gastos/frmExtraccionGastos.aspx">Extracción de Gastos</a></li>
-                    <li><a href="../../../../ClientesCasa/Views/Gastos/frmMantenimiento.aspx">Mantenimiento de Gastos MXN</a></li>
+                    <%--<li><a href="../../../../ClientesCasa/Views/Gastos/frmMantenimiento.aspx">Mantenimiento de Gastos MXN</a></li>--%>
+                    <li><a href="../../../../ClientesCasa/Views/Manttos/frmManttosMXN.aspx">Mantenimiento de Gastos MXN</a></li>
                     <li><a href="../../../../ClientesCasa/Views/Gastos/frmMantenimientoUsd.aspx">Mantenimiento de Gastos USD</a></li>
                     <li><a href="../../../../ClientesCasa/Views/Gastos/frmCorteGastos.aspx">Corte Mensual</a></li>
                 </ul>
@@ -379,7 +380,7 @@
     <script src="<%=ResolveClientUrl("~/Scripts/wysihtml5-0.3.0.js") %>"></script>
     <script src="<%=ResolveClientUrl("~/Scripts/jquery.peity.min.js") %>"></script>
     <script src="<%=ResolveClientUrl("~/Scripts/bootstrap-wysihtml5.js") %>"></script>
-    <script type="text/javascript" src="<%=ResolveClientUrl("https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE") %>"></script>
+    
 
 
 <script type="text/javascript">

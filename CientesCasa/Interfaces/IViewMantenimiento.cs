@@ -41,6 +41,10 @@ namespace ClientesCasa.Interfaces
         event EventHandler eInsImpGasto;
         event EventHandler eSearchLegs;
         event EventHandler eNewGastoEstimado;
-        event EventHandler eUpaComprobante;
+        event EventHandler eUpaComprobanteMXN;
+        event EventHandler eUpaComprobanteUSD;
+        event EventHandler eGetCargaInicial;
+        event EventHandler eObjSelectedUSD;
+        event EventHandler eUpaGastosUSD;
     }
 }

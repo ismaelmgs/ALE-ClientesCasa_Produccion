@@ -147,6 +147,8 @@ namespace ClientesCasa.Presenter
         {
             try
             {
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO Arma Gastor por contrato (porcentaje) --");
+
                 DataSet ds = new DataSet();
                 DataTable dtMEX = new DataTable("dtMex");
                 //DataTable dtUSA = new DataTable("dtUSA");
@@ -364,6 +366,7 @@ namespace ClientesCasa.Presenter
                     }
                 }
 
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN Arma Gastor por contrato (porcentaje) --");
                 return ds;
             }
             catch (Exception ex)
@@ -413,7 +416,7 @@ namespace ClientesCasa.Presenter
             //oIGesCat.ActualizaBanderaComprobanteGasto(oIView.dtGastosMEX);
             oIGesCat.ActualizaBanderaComprobanteGasto(oIView.dtGastosUSA);
 
-            ObjSelected_Presenter(sender, e);
+            ObjSelectedUSD_Presenter(sender, e);
         }
     }
 }
