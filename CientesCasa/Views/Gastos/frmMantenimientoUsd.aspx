@@ -291,6 +291,21 @@
                                                     <td>
                                                         <asp:UpdatePanel ID="upaGastosDolares" runat="server" ChildrenAsTriggers="true" UpdateMode="Conditional">
                                                             <ContentTemplate>
+                                                                <asp:UpdatePanel ID="upaTotales" runat="server" UpdateMode="Conditional">
+                                                                    <ContentTemplate>
+                                                                        <asp:Panel ID="pnlTotales" runat="server" style="text-align:left; width:100%; font-size:11pt; padding-bottom:15px;">
+                                                                            <div>
+                                                                                <asp:Label ID="lblTotalOri" runat="server" Text="Total Original:" style="font-weight:bold;"></asp:Label>
+                                                                                <asp:Label ID="readTotalOri" runat="server" Text=""></asp:Label>
+                                                                            </div>
+                                                                            <div>
+                                                                                <asp:Label ID="lblTotal" runat="server" Text="Total a cobrar:" style="font-weight:bold;"></asp:Label>
+                                                                                <asp:Label ID="readTotal" runat="server" Text=""></asp:Label>
+                                                                            </div>
+                                                                        </asp:Panel>
+                                                                    </ContentTemplate>
+                                                                </asp:UpdatePanel>
+
                                                                 <asp:Panel ID="pnlGastosUSA" runat="server" ScrollBars="Auto" style="max-height:600px; overflow-y:auto;">
 
                                                                     <asp:GridView ID="gvMantenimientoUSA" runat="server" AutoGenerateColumns="false" ShowFooter="true" AllowPaging="true"
@@ -404,15 +419,24 @@
 
                                                                             <asp:TemplateField HeaderText="Porcentaje">
                                                                                 <ItemTemplate>
-                                                                                    <asp:DropDownList ID="ddlPorcentaje" runat="server" Width="100px" EnableViewState="true" Style="width:80px;">
-                                                                                    </asp:DropDownList>
+
+                                                                                    <asp:UpdatePanel ID="upaPorcentaje" runat="server" UpdateMode="Conditional">
+                                                                                        <ContentTemplate>
+                                                                                            <asp:DropDownList ID="ddlPorcentaje" runat="server" Width="100px" EnableViewState="true" Style="width:80px;" AutoPostBack="true" OnSelectedIndexChanged="ddlPorcentaje_SelectedIndexChanged">
+                                                                                            </asp:DropDownList>
+                                                                                        </ContentTemplate>
+                                                                                        <Triggers>
+                                                                                            <asp:AsyncPostBackTrigger ControlID="ddlPorcentaje" EventName="SelectedIndexChanged" />
+                                                                                        </Triggers>
+                                                                                    </asp:UpdatePanel>
+
                                                                                     <asp:Image ID="imgError" runat="server" ImageUrl="~/Images/icons/error.png" ToolTip="La distribución de porcentaje es incorrecta." Width="16px" Height="16px" Visible="false" />
                                                                                     <asp:Image ID="imgWarning" runat="server" ImageUrl="~/Images/icons/warning.png" ToolTip="No se ha realizado la distribución del gasto." Width="16px" Height="16px" Visible="false" />
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateField>
                                                                             <asp:TemplateField HeaderText="Importe">
                                                                                 <ItemTemplate>
-                                                                                    <asp:TextBox ID="txtImporte_2" runat="server" Style="display: block; text-align: right; width:70px;"></asp:TextBox>
+                                                                                    <asp:TextBox ID="txtImporte_2" runat="server" Style="display: block; text-align: right; width:100px !important;" ReadOnly="true"></asp:TextBox>
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateField>
 

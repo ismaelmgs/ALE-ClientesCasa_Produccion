@@ -35,6 +35,7 @@ namespace ClientesCasa.Views.Manttos
 
                 if (eGetCargaInicial != null)
                     eGetCargaInicial(sender, e);
+                
             }
         }
 
@@ -172,8 +173,16 @@ namespace ClientesCasa.Views.Manttos
             GridView gv = new GridView();
             gv.AutoGenerateColumns = true;
 
+            //Formatear dtExport
+            DataTable dt = new DataTable();
+            //if (dtExport != null && dtExport.Rows.Count > 0)
+            //    dt = FormatoMXN(dtExport);
+
             DataTable dtPesos = new DataTable();
-            dtPesos = ExportaGridExcelPesos(gvMantenimiento, MonedaGasto.Pesos);
+
+            if (dtExport != null && dtExport.Rows.Count > 0)
+                dtPesos = ExportaGridExcelPesos(gvMantenimiento, MonedaGasto.Pesos, dtExport);
+
             gv.DataSource = dtPesos;
             gv.DataBind();
 
@@ -190,6 +199,21 @@ namespace ClientesCasa.Views.Manttos
             gv.RenderControl(htmlWrite);
             Response.Write(stringWrite.ToString());
             Response.End();
+        }
+
+        public DataTable FormatoMXN(DataTable dtSource)
+        {
+            try
+            {
+                DataTable dtTarget = new DataTable();
+
+                return dtTarget;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         decimal dSumaImporte = 0;
@@ -221,23 +245,34 @@ namespace ClientesCasa.Views.Manttos
                                 txtImp2 = (TextBox)e.Row.FindControl("txtImporte_2");
                                 ddlPorc = (DropDownList)e.Row.FindControl("ddlPorcentaje");
 
-                                if (dt != null)
-                                    txtImp2.Text = dt.Rows[e.Row.RowIndex][24].S();
+                                if (txtImp2 != null)
+                                    txtImp2.Text = dt.Rows[e.Row.RowIndex]["ImporteContGasto"].Db().ToString("N2");
 
-                                if (dtPorcentaje != null)
+                                //if (txtImp.Text.D() == 0)
+                                //    txtImp2.Text = txtImp.Text.Db().ToString("N2");
+
+                                if (ddlPorc != null)
                                 {
                                     ddlPorc.DataSource = dtPorcentaje;
                                     ddlPorc.DataTextField = "Valor";
                                     ddlPorc.DataValueField = "Id";
                                     ddlPorc.DataBind();
 
-                                    if (dt.Rows[e.Row.RowIndex][23].S() != "")
-                                        ddlPorc.SelectedValue = dt.Rows[e.Row.RowIndex][23].S();
+                                    if (dt.Rows[e.Row.RowIndex]["PorcParticipacion"].S() != "")
+                                        ddlPorc.SelectedItem.Value = dt.Rows[e.Row.RowIndex][23].I().S();
                                 }
+
+                                decimal dRes = 0;
+                                decimal dPor = 0;
+
+                                //if (!string.IsNullOrEmpty(ddlPorc.SelectedValue))
+                                //    dPor = ddlPorc.SelectedValue.S().D();
+
+                                //dRes = ResPorcentaje(txtImp.Text.D(), dPor);
+                                //txtImp2.Text = dRes.Db().ToString("N2");
                             }
 
-                            if //(txtNoPierna != null && txtTrip != null && 
-                                (txtImp != null)
+                            if (txtImp != null)
                             {
                                 if (dt != null)
                                 {
@@ -350,6 +385,7 @@ namespace ClientesCasa.Views.Manttos
                                 e.Row.Cells[6].Text = dSumaImporte.ToString("c");
                                 e.Row.Cells[6].HorizontalAlign = HorizontalAlign.Center;
                                 e.Row.Cells[6].Font.Bold = true;
+                                readTotal.Text = dSumaImporte.ToString("c");
                             }
 
                             GC.Collect();
@@ -675,7 +711,11 @@ namespace ClientesCasa.Views.Manttos
 
                     lblClaveCliente.Text = "Clave cliente: " + lstCliente[0];
                     lblNombreCliente.Text = "Nombre cliente: " + lstCliente[1];
-                    lblMatriculaMEX.Text = "Matrícula: " + lstCliente[2];
+
+                    if (lstCliente[2] == "XA-FTY" || lstCliente[2] == "F -7X")
+                        lblMatriculaMEX.Text = "Matrícula: XA-FTY, F -7X";
+                    else
+                        lblMatriculaMEX.Text = "Matrícula: " + lstCliente[2];
 
                     lblReqMes.Text = NombreMes;
                     lblReqAnio.Text = iAnio.S();
@@ -1055,6 +1095,31 @@ namespace ClientesCasa.Views.Manttos
             }
         }
 
+        protected void ddlPorcentaje_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownList ddl = (DropDownList)sender;
+                GridViewRow gvr = (GridViewRow)ddl.NamingContainer;
+                int index = gvr.RowIndex;
+                DropDownList ddlPorc = (DropDownList)gvMantenimiento.Rows[index].FindControl("ddlPorcentaje");
+                TextBox txtImporte = (TextBox)gvMantenimiento.Rows[index].FindControl("txtImporte");
+                TextBox txtImporte2 = (TextBox)gvMantenimiento.Rows[index].FindControl("txtImporte_2");
+                decimal dImporte = 0;
+                decimal dResultado = 0;
+
+                if (txtImporte != null)
+                    dImporte = txtImporte.Text.D();
+
+                dResultado = ResPorcentaje(dImporte, ddlPorc.SelectedItem.Text.D());
+                txtImporte2.Text = dResultado.ToString("N2");
+                upaGridGastosMXN.Update();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
 
         #region METODOS
@@ -1077,6 +1142,10 @@ namespace ClientesCasa.Views.Manttos
             {
                 if (ds != null)
                 {
+                    readTotalOri.Text = string.Empty;
+                    readTotal.Text = string.Empty;
+                    dSumaImporteO = 0;
+                    dSumaImporte = 0;
                     dsGastosMXN = null;
                     dsGastosMXN = ds;
                     dtGastosMEX = ds.Tables[0];
@@ -1086,7 +1155,23 @@ namespace ClientesCasa.Views.Manttos
                     gvMantenimiento.DataSource = dtGastosMEX;
                     gvMantenimiento.DataBind();
                     ControlLlenadoDatos(gvMantenimiento);
-                    pnlRubros.Visible = true;
+
+                    if (ds.Tables[2].Rows.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(ds.Tables[2].Rows[0][0].S()))
+                        {
+                            dSumaImporte = ds.Tables[2].Rows[0][0].S().D();
+                            dSumaImporteO = ds.Tables[2].Rows[0][1].S().D();
+
+                            readTotalOri.Text = dSumaImporteO.ToString("c"); //Total original
+                            readTotal.Text = dSumaImporte.ToString("c"); //Total a cobrar
+                            pnlRubros.Visible = true;
+                            upaTotales.Update();
+                        }
+                    }
+                    //Lleno un viewstate con un datatable
+                    dtExport = null;
+                    dtExport = dtGastosMEX;
                 }
                 GC.Collect();
             }
@@ -1200,7 +1285,7 @@ namespace ClientesCasa.Views.Manttos
 
             return sMes;
         }
-        private DataTable ExportaGridExcelPesos(GridView gv, MonedaGasto eMoneda)
+        private DataTable ExportaGridExcelPesos(GridView gv, MonedaGasto eMoneda, DataTable dtMXN)
         {
             try
             {
@@ -1231,47 +1316,84 @@ namespace ClientesCasa.Views.Manttos
                     dtPesos.Columns.Add(dtContratos.Rows[0]["ClaveContrato"].S() + "Importe");
                 }
 
-                foreach (GridViewRow row in gv.Rows)
+                #region FORMAT DATATABLE
+
+                for (int i = 0; i < dtMXN.Rows.Count; i++)
                 {
                     DataRow dr = dtPesos.NewRow();
+                    dr["FechaVuelo"] = dtMXN.Rows[i]["FechaVuelo"].S();
+                    dr["Referencia"] = dtMXN.Rows[i]["Referencia"].S();
 
-                    //dr["Pierna"] = ((TextBox)row.FindControl("txtNoPierna")).Text.S();
-                    //dr["Trip"] = eMoneda == MonedaGasto.Pesos ? ((TextBox)row.FindControl("txtNoTripMEX")).Text.S() : ((TextBox)row.FindControl("txtNoTripUSA")).Text.S();
-                    dr["FechaVuelo"] = ((Label)row.FindControl("lblFechaMXN")).Text.S();
-                    dr["Referencia"] = ((Label)row.FindControl("lblReferenciaPesos")).Text.S();
-                    dr["Importe"] = String.Format("{0:C}", Convert.ToDecimal(((TextBox)row.FindControl("txtImporte")).Text.S()));
-                    Label lblImpOri = (Label)row.FindControl("lblImporteOriginal");
-                    dr["ImporteO"] = lblImpOri.Text;
-                    //dr["ImporteO"] = String.Format("{0:C}", Convert.ToDecimal(row.Cells[6].Text.Replace("$", "").S()));
-                    dr["FijoVar"] = ((DropDownList)row.FindControl("ddlFijoVar")).SelectedItem.Text.S();
-                    dr["Rubro"] = ((DropDownList)row.FindControl("ddlRubro")).SelectedItem.Text.S();
-                    dr["TipoGasto"] = ((DropDownList)row.FindControl("ddlTipoGasto")).SelectedItem.Text.S();
-                    //dr["AmpliadoGasto"] = ""; // ((DropDownList)row.FindControl("ddlAcumulado1")).SelectedItem.Text.S();
-                    dr["Comentarios"] = ((TextBox)row.FindControl("txtComentarios")).Text.S();
+                    dr["Importe"] = dtMXN.Rows[i]["ImporteModificado"].D().ToString("c");
+                    dr["ImporteO"] = dtMXN.Rows[i]["Importe"].D().ToString("c");
 
-                    if (dtContratos.Rows.Count > 1)
-                    {
-                        for (int i = 0; i < dtContratos.Rows.Count; i++)
-                        {
-                            string sContrato = string.Empty;
-                            sContrato = dtContratos.Rows[i]["ClaveContrato"].S().Replace("-", "");
+                    dr["FijoVar"] = dtMXN.Rows[i]["TipoRubro"].S() == "1" ? "FIJO" : "VARIABLE";
+                    dr["Rubro"] = dtMXN.Rows[i]["DescripcionRubro"].S();
+                    dr["TipoGasto"] = dtMXN.Rows[i]["TipoGasto"].S();
+                    dr["Comentarios"] = dtMXN.Rows[i]["Comentarios"].S();
+                    dr["Porcentaje"] = dtMXN.Rows[i]["PorcParticipacion"].S();
 
-                            DropDownList ddl = (DropDownList)gv.Rows[row.RowIndex].FindControl("ddl" + sContrato + "|" + row.RowIndex.S());
-                            TextBox txt = (TextBox)gv.Rows[row.RowIndex].FindControl("txt" + sContrato);
-                            dr[dtContratos.Rows[i]["ClaveContrato"].S()] = ddl.SelectedItem.Text.S();
-                            dr[dtContratos.Rows[i]["ClaveContrato"].S() + "Imp"] = txt.Text.S();
-                        }
-                    }
-                    else if (dtContratos.Rows.Count == 1)
-                    {
-                        DropDownList ddl = (DropDownList)gv.Rows[row.RowIndex].FindControl("ddlPorcentaje");
-                        TextBox txt = (TextBox)gv.Rows[row.RowIndex].FindControl("txtImporte_2");
-                        dr["Porcentaje"] = ddl.SelectedItem.Text.S();
-                        dr[dtContratos.Rows[0]["ClaveContrato"].S() + "Importe"] = txt.Text.S();
-                    }
+                    if (dtMXN.Rows[i]["Importe"].ToString() == "0.00" || dtMXN.Rows[i]["Importe"].ToString() == "0")
+                        dr[dtContratos.Rows[0]["ClaveContrato"].S() + "Importe"] = decimal.Parse(dtMXN.Rows[i]["ImporteModificado"].ToString()).ToString("c");
 
+                    
+                    dr[dtContratos.Rows[0]["ClaveContrato"].S() + "Importe"] = dtMXN.Rows[i]["ImporteModificado"].D().ToString("c");
+                    
                     dtPesos.Rows.Add(dr);
                 }
+
+                dtPesos.Columns["FechaVuelo"].ColumnName = "Fecha de Vuelo";
+                dtPesos.Columns["Referencia"].ColumnName = "No. Referencia";
+                dtPesos.Columns["Importe"].ColumnName = "Importe a cobrar";
+                dtPesos.Columns["ImporteO"].ColumnName = "Importe Original";
+                dtPesos.Columns["FijoVar"].ColumnName = "Fijo/Variable";
+
+                dtPesos.Columns["TipoGasto"].ColumnName = "Tipo de Gasto";
+                dtPesos.Columns["Porcentaje"].ColumnName = "% Participación";
+                dtPesos.AcceptChanges();
+                #endregion
+
+                //foreach (GridViewRow row in gv.Rows)
+                //{
+                //    DataRow dr = dtPesos.NewRow();
+
+                //    //dr["Pierna"] = ((TextBox)row.FindControl("txtNoPierna")).Text.S();
+                //    //dr["Trip"] = eMoneda == MonedaGasto.Pesos ? ((TextBox)row.FindControl("txtNoTripMEX")).Text.S() : ((TextBox)row.FindControl("txtNoTripUSA")).Text.S();
+                //    dr["FechaVuelo"] = ((Label)row.FindControl("lblFechaMXN")).Text.S();
+                //    dr["Referencia"] = ((Label)row.FindControl("lblReferenciaPesos")).Text.S();
+                //    dr["Importe"] = String.Format("{0:C}", Convert.ToDecimal(((TextBox)row.FindControl("txtImporte")).Text.S()));
+                //    Label lblImpOri = (Label)row.FindControl("lblImporteOriginal");
+                //    dr["ImporteO"] = lblImpOri.Text;
+                //    //dr["ImporteO"] = String.Format("{0:C}", Convert.ToDecimal(row.Cells[6].Text.Replace("$", "").S()));
+                //    dr["FijoVar"] = ((DropDownList)row.FindControl("ddlFijoVar")).SelectedItem.Text.S();
+                //    dr["Rubro"] = ((DropDownList)row.FindControl("ddlRubro")).SelectedItem.Text.S();
+                //    dr["TipoGasto"] = ((DropDownList)row.FindControl("ddlTipoGasto")).SelectedItem.Text.S();
+                //    //dr["AmpliadoGasto"] = ""; // ((DropDownList)row.FindControl("ddlAcumulado1")).SelectedItem.Text.S();
+                //    dr["Comentarios"] = ((TextBox)row.FindControl("txtComentarios")).Text.S();
+
+                //    if (dtContratos.Rows.Count > 1)
+                //    {
+                //        for (int i = 0; i < dtContratos.Rows.Count; i++)
+                //        {
+                //            string sContrato = string.Empty;
+                //            sContrato = dtContratos.Rows[i]["ClaveContrato"].S().Replace("-", "");
+
+                //            DropDownList ddl = (DropDownList)gv.Rows[row.RowIndex].FindControl("ddl" + sContrato + "|" + row.RowIndex.S());
+                //            TextBox txt = (TextBox)gv.Rows[row.RowIndex].FindControl("txt" + sContrato);
+                //            dr[dtContratos.Rows[i]["ClaveContrato"].S()] = ddl.SelectedItem.Text.S();
+                //            dr[dtContratos.Rows[i]["ClaveContrato"].S() + "Imp"] = txt.Text.S();
+                //        }
+                //    }
+                //    else if (dtContratos.Rows.Count == 1)
+                //    {
+                //        DropDownList ddl = (DropDownList)gv.Rows[row.RowIndex].FindControl("ddlPorcentaje");
+                //        TextBox txt = (TextBox)gv.Rows[row.RowIndex].FindControl("txtImporte_2");
+                //        dr["Porcentaje"] = ddl.SelectedItem.Text.S();
+                //        dr[dtContratos.Rows[0]["ClaveContrato"].S() + "Importe"] = txt.Text.S();
+                //    }
+
+                //    dtPesos.Rows.Add(dr);
+                //}
 
                 return dtPesos;
             }
@@ -1340,6 +1462,7 @@ namespace ClientesCasa.Views.Manttos
                         }
                         else
                         {
+                            sContrato = dtContratos.Rows[j]["ClaveContrato"].S().Replace("-", "");
                             txt = (TextBox)gvMantenimiento.Rows[i].FindControl("txtImporte_2");
                             ddl = (DropDownList)gvMantenimiento.Rows[i].FindControl("ddlPorcentaje");
                         }
@@ -1646,7 +1769,10 @@ namespace ClientesCasa.Views.Manttos
                             if (iIdGasto == dtGastosMEX.Rows[x]["IdGasto"].S().I())
                             {
                                 if (txtImp != null)
-                                    txtImp.Text = dtGastosMEX.Rows[x]["ImporteModificado"].S();
+                                    txtImp.Text = dtGastosMEX.Rows[x]["ImporteModificado"].Db().ToString("N2");
+
+                                //if (txtImp.Text.D() == 0)
+                                //    txtImp2.Text = txtImp.Text.Db().ToString("N2");
 
                                 if (ddlFijoVar != null)
                                     ddlFijoVar.SelectedValue = dtGastosMEX.Rows[x]["TipoRubro"].S();
@@ -1686,7 +1812,7 @@ namespace ClientesCasa.Views.Manttos
                                 if (dtContratos.Rows.Count == 1)
                                 {
                                     if (dtGastosMEX != null)
-                                        txtImp2.Text = dtGastosMEX.Rows[x][24].S();
+                                        txtImp2.Text = dtGastosMEX.Rows[x]["ImporteContGasto"].Db().ToString("N2");
 
                                     if (dtPorcentaje != null)
                                     {
@@ -1695,9 +1821,19 @@ namespace ClientesCasa.Views.Manttos
                                         ddlPorc.DataValueField = "Id";
                                         ddlPorc.DataBind();
 
-                                        if (dtGastosMEX.Rows[x][23].S() != "")
-                                            ddlPorc.SelectedValue = dtGastosMEX.Rows[x][23].S();
+                                        if (dtGastosMEX.Rows[x]["PorcParticipacion"].S() != "")
+                                            ddlPorc.SelectedValue = dtGastosMEX.Rows[x]["PorcParticipacion"].S();
                                     }
+
+                                    decimal dRes = 0;
+                                    decimal dPor = 0;
+
+                                    //if (!string.IsNullOrEmpty(ddlPorc.SelectedValue))
+                                    //    dPor = ddlPorc.SelectedValue.S().D();
+
+                                    //dRes = ResPorcentaje(txtImp.Text.D(), dPor);
+                                    //txtImp2.Text = dRes.Db().ToString("N2");
+
                                 }
 
                                 if (btnGastoE != null)
@@ -1727,6 +1863,19 @@ namespace ClientesCasa.Views.Manttos
                 }
             }
             catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public decimal ResPorcentaje(decimal dImporte, decimal dPorc)
+        {
+            try
+            {
+                decimal dRes = 0;
+                dRes = (dImporte * (dPorc / 100));
+                return dRes;
+            }
+            catch (Exception)
             {
                 throw;
             }
@@ -2013,6 +2162,12 @@ namespace ClientesCasa.Views.Manttos
         {
             get { return (DataSet)ViewState["VSdsGastosMXN"]; }
             set { ViewState["VSdsGastosMXN"] = value; }
+        }
+
+        public DataTable dtExport
+        {
+            get { return (DataTable)ViewState["VExport"]; }
+            set { ViewState["VExport"] = value; }
         }
         #endregion
 

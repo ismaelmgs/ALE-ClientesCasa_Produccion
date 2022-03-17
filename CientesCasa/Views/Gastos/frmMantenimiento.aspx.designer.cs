@@ -20,7 +20,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolKitScriptManager;
-
+        
         /// <summary>
         /// Control upaPrincipal.
         /// </summary>
@@ -29,7 +29,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaPrincipal;
-
+        
         /// <summary>
         /// Control Panel1.
         /// </summary>
@@ -38,7 +38,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
-
+        
         /// <summary>
         /// Control txtBusqueda.
         /// </summary>
@@ -47,7 +47,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
-
+        
         /// <summary>
         /// Control ddlOpcBus.
         /// </summary>
@@ -56,7 +56,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlOpcBus;
-
+        
         /// <summary>
         /// Control btnBuscarCliente.
         /// </summary>
@@ -65,7 +65,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscarCliente;
-
+        
         /// <summary>
         /// Control gvClientes.
         /// </summary>
@@ -74,7 +74,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvClientes;
-
+        
         /// <summary>
         /// Control pnlActualizar.
         /// </summary>
@@ -83,7 +83,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlActualizar;
-
+        
         /// <summary>
         /// Control btnActualizarComprobantes.
         /// </summary>
@@ -92,7 +92,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnActualizarComprobantes;
-
+        
         /// <summary>
         /// Control btnActualizar.
         /// </summary>
@@ -101,7 +101,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnActualizar;
-
+        
         /// <summary>
         /// Control lblMex.
         /// </summary>
@@ -110,7 +110,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMex;
-
+        
         /// <summary>
         /// Control lblReqMes.
         /// </summary>
@@ -119,7 +119,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqMes;
-
+        
         /// <summary>
         /// Control lblAnio.
         /// </summary>
@@ -128,7 +128,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAnio;
-
+        
         /// <summary>
         /// Control lblReqAnio.
         /// </summary>
@@ -137,7 +137,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqAnio;
-
+        
         /// <summary>
         /// Control timer1.
         /// </summary>
@@ -146,7 +146,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.Timer timer1;
-
+        
         /// <summary>
         /// Control pnlRubros.
         /// </summary>
@@ -155,7 +155,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlRubros;
-
+        
         /// <summary>
         /// Control upaGastosPesos.
         /// </summary>
@@ -164,7 +164,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaGastosPesos;
-
+        
         /// <summary>
         /// Control btnAgregarEstimado.
         /// </summary>
@@ -173,7 +173,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarEstimado;
-
+        
         /// <summary>
         /// Control lblClaveCliente.
         /// </summary>
@@ -182,7 +182,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblClaveCliente;
-
+        
         /// <summary>
         /// Control lblNombreCliente.
         /// </summary>
@@ -191,7 +191,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNombreCliente;
-
+        
         /// <summary>
         /// Control lblMatriculaMEX.
         /// </summary>
@@ -200,7 +200,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMatriculaMEX;
-
+        
         /// <summary>
         /// Control lbkExportaMXN.
         /// </summary>
@@ -209,7 +209,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbkExportaMXN;
-
+        
         /// <summary>
         /// Control upaGridGastosMXN.
         /// </summary>
@@ -218,7 +218,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaGridGastosMXN;
-
+        
         /// <summary>
         /// Control pnlRubrosMat.
         /// </summary>
@@ -227,7 +227,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlRubrosMat;
-
+        
         /// <summary>
         /// Control gvMantenimiento.
         /// </summary>
@@ -236,7 +236,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvMantenimiento;
-
+        
         /// <summary>
         /// Control btnModificar.
         /// </summary>
@@ -245,7 +245,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnModificar;
-
+        
         /// <summary>
         /// Control pnlRubrosUSA.
         /// </summary>
@@ -254,7 +254,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlRubrosUSA;
-
+        
         /// <summary>
         /// Control upaDolares.
         /// </summary>
@@ -263,7 +263,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaDolares;
-
+        
         /// <summary>
         /// Control btnAgregarEstimadoUSA.
         /// </summary>
@@ -272,7 +272,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarEstimadoUSA;
-
+        
         /// <summary>
         /// Control lblClaveClienteUSD.
         /// </summary>
@@ -281,7 +281,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblClaveClienteUSD;
-
+        
         /// <summary>
         /// Control lblNombreClienteUSD.
         /// </summary>
@@ -290,7 +290,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNombreClienteUSD;
-
+        
         /// <summary>
         /// Control lblMatriculaUSD.
         /// </summary>
@@ -299,7 +299,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMatriculaUSD;
-
+        
         /// <summary>
         /// Control lkbExportaUSD.
         /// </summary>
@@ -308,7 +308,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbExportaUSD;
-
+        
         /// <summary>
         /// Control upaGastosDolares.
         /// </summary>
@@ -317,7 +317,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaGastosDolares;
-
+        
         /// <summary>
         /// Control pnlGastosUSA.
         /// </summary>
@@ -326,7 +326,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlGastosUSA;
-
+        
         /// <summary>
         /// Control gvMantenimientoUSA.
         /// </summary>
@@ -335,7 +335,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvMantenimientoUSA;
-
+        
         /// <summary>
         /// Control btnModificar1.
         /// </summary>
@@ -344,7 +344,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnModificar1;
-
+        
         /// <summary>
         /// Control prgLoadingStatus.
         /// </summary>
@@ -362,7 +362,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdTargetPeriodo;
-
+        
         /// <summary>
         /// Control mpePeriodo.
         /// </summary>
@@ -371,7 +371,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpePeriodo;
-
+        
         /// <summary>
         /// Control pnlPeriodo.
         /// </summary>
@@ -380,7 +380,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPeriodo;
-
+        
         /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
@@ -389,7 +389,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
+        
         /// <summary>
         /// Control Label2.
         /// </summary>
@@ -398,7 +398,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-
+        
         /// <summary>
         /// Control Label1.
         /// </summary>
@@ -407,7 +407,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// Control txtPeriodo.
         /// </summary>
@@ -416,7 +416,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPeriodo;
-
+        
         /// <summary>
         /// Control btnAceptarPeriodo.
         /// </summary>
@@ -425,7 +425,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarPeriodo;
-
+        
         /// <summary>
         /// Control btnCancelar.
         /// </summary>
@@ -434,7 +434,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
-
+        
         /// <summary>
         /// Control hdTargetConfirm.
         /// </summary>
@@ -443,7 +443,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdTargetConfirm;
-
+        
         /// <summary>
         /// Control mpeConfirm.
         /// </summary>
@@ -452,7 +452,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpeConfirm;
-
+        
         /// <summary>
         /// Control pnlConfirm.
         /// </summary>
@@ -461,7 +461,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlConfirm;
-
+        
         /// <summary>
         /// Control UpdatePanel2.
         /// </summary>
@@ -470,7 +470,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-
+        
         /// <summary>
         /// Control tdCaption.
         /// </summary>
@@ -479,7 +479,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableCell tdCaption;
-
+        
         /// <summary>
         /// Control lblCaption.
         /// </summary>
@@ -488,7 +488,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCaption;
-
+        
         /// <summary>
         /// Control imgInfo.
         /// </summary>
@@ -497,7 +497,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgInfo;
-
+        
         /// <summary>
         /// Control lblMessageConfirm.
         /// </summary>
@@ -506,7 +506,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageConfirm;
-
+        
         /// <summary>
         /// Control btnAceptConfirm.
         /// </summary>
@@ -515,7 +515,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptConfirm;
-
+        
         /// <summary>
         /// Control btnCancelConfirm.
         /// </summary>
@@ -524,7 +524,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelConfirm;
-
+        
         /// <summary>
         /// Control hdTargetPiernas.
         /// </summary>
@@ -533,7 +533,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdTargetPiernas;
-
+        
         /// <summary>
         /// Control mpePierna.
         /// </summary>
@@ -542,7 +542,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpePierna;
-
+        
         /// <summary>
         /// Control pnlPiernasModal.
         /// </summary>
@@ -551,7 +551,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPiernasModal;
-
+        
         /// <summary>
         /// Control upaBuscaPiernas.
         /// </summary>
@@ -560,7 +560,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaBuscaPiernas;
-
+        
         /// <summary>
         /// Control lblTituloPierna.
         /// </summary>
@@ -569,7 +569,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTituloPierna;
-
+        
         /// <summary>
         /// Control rblTipoFecha.
         /// </summary>
@@ -578,7 +578,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblTipoFecha;
-
+        
         /// <summary>
         /// Control pnlPiernasMXN.
         /// </summary>
@@ -587,7 +587,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPiernasMXN;
-
+        
         /// <summary>
         /// Control lblPierna.
         /// </summary>
@@ -596,7 +596,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPierna;
-
+        
         /// <summary>
         /// Control txtTripPiernas.
         /// </summary>
@@ -605,7 +605,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTripPiernas;
-
+        
         /// <summary>
         /// Control lblReqFechaVlo.
         /// </summary>
@@ -614,7 +614,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqFechaVlo;
-
+        
         /// <summary>
         /// Control btnBuscarPiernas.
         /// </summary>
@@ -623,7 +623,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscarPiernas;
-
+        
         /// <summary>
         /// Control lblValFechaVlo.
         /// </summary>
@@ -632,7 +632,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblValFechaVlo;
-
+        
         /// <summary>
         /// Control pnlPiernas.
         /// </summary>
@@ -641,7 +641,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPiernas;
-
+        
         /// <summary>
         /// Control gvPiernas.
         /// </summary>
@@ -650,7 +650,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvPiernas;
-
+        
         /// <summary>
         /// Control lblMensajePiernas.
         /// </summary>
@@ -659,7 +659,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajePiernas;
-
+        
         /// <summary>
         /// Control pnlFechaOpeMXN.
         /// </summary>
@@ -668,7 +668,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlFechaOpeMXN;
-
+        
         /// <summary>
         /// Control txtFechaOperacionMXN.
         /// </summary>
@@ -677,7 +677,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaOperacionMXN;
-
+        
         /// <summary>
         /// Control btnAceptarPierna.
         /// </summary>
@@ -686,7 +686,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarPierna;
-
+        
         /// <summary>
         /// Control btnCancelarPierna.
         /// </summary>
@@ -695,7 +695,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarPierna;
-
+        
         /// <summary>
         /// Control upgBuscarPiernas.
         /// </summary>
@@ -704,7 +704,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress upgBuscarPiernas;
-
+        
         /// <summary>
         /// Control hdTargetPiernasUSA.
         /// </summary>
@@ -713,7 +713,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdTargetPiernasUSA;
-
+        
         /// <summary>
         /// Control mpePiernasUSA.
         /// </summary>
@@ -722,7 +722,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpePiernasUSA;
-
+        
         /// <summary>
         /// Control pnlPiernasUSA.
         /// </summary>
@@ -731,7 +731,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPiernasUSA;
-
+        
         /// <summary>
         /// Control upaPiernasUSA.
         /// </summary>
@@ -740,7 +740,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaPiernasUSA;
-
+        
         /// <summary>
         /// Control Label3.
         /// </summary>
@@ -749,7 +749,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-
+        
         /// <summary>
         /// Control rblTipoFechaUSA.
         /// </summary>
@@ -758,7 +758,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblTipoFechaUSA;
-
+        
         /// <summary>
         /// Control pnlBusPiernasUSA.
         /// </summary>
@@ -767,7 +767,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlBusPiernasUSA;
-
+        
         /// <summary>
         /// Control lblTripUSA.
         /// </summary>
@@ -776,7 +776,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTripUSA;
-
+        
         /// <summary>
         /// Control txtTrioUSA.
         /// </summary>
@@ -785,7 +785,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTrioUSA;
-
+        
         /// <summary>
         /// Control lblReqFechaVloU.
         /// </summary>
@@ -794,7 +794,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqFechaVloU;
-
+        
         /// <summary>
         /// Control btnBuscarPiernasUSA.
         /// </summary>
@@ -803,7 +803,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscarPiernasUSA;
-
+        
         /// <summary>
         /// Control lblValFechaVloU.
         /// </summary>
@@ -812,7 +812,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblValFechaVloU;
-
+        
         /// <summary>
         /// Control pnlPiernasGridUSA.
         /// </summary>
@@ -821,7 +821,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPiernasGridUSA;
-
+        
         /// <summary>
         /// Control gvPiernasUSA.
         /// </summary>
@@ -830,7 +830,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvPiernasUSA;
-
+        
         /// <summary>
         /// Control lblMensajePiernasUSA.
         /// </summary>
@@ -839,7 +839,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajePiernasUSA;
-
+        
         /// <summary>
         /// Control pnlFechaOpeUSA.
         /// </summary>
@@ -848,7 +848,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlFechaOpeUSA;
-
+        
         /// <summary>
         /// Control txtFechaOperacionUSA.
         /// </summary>
@@ -857,7 +857,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaOperacionUSA;
-
+        
         /// <summary>
         /// Control btnAceptarPiernaUSA.
         /// </summary>
@@ -866,7 +866,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarPiernaUSA;
-
+        
         /// <summary>
         /// Control btnCancelarPiernaUSA.
         /// </summary>
@@ -875,7 +875,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarPiernaUSA;
-
+        
         /// <summary>
         /// Control UpdateProgress1.
         /// </summary>
@@ -884,7 +884,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress UpdateProgress1;
-
+        
         /// <summary>
         /// Control hdTargetGastosEstimados.
         /// </summary>
@@ -893,7 +893,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdTargetGastosEstimados;
-
+        
         /// <summary>
         /// Control mpeGastosEstimados.
         /// </summary>
@@ -902,7 +902,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpeGastosEstimados;
-
+        
         /// <summary>
         /// Control pnlGastosEstimados.
         /// </summary>
@@ -911,7 +911,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlGastosEstimados;
-
+        
         /// <summary>
         /// Control upaGastosEstimados.
         /// </summary>
@@ -920,7 +920,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upaGastosEstimados;
-
+        
         /// <summary>
         /// Control lblTituloMatricula.
         /// </summary>
@@ -929,7 +929,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTituloMatricula;
-
+        
         /// <summary>
         /// Control lblNoReferencia.
         /// </summary>
@@ -938,7 +938,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNoReferencia;
-
+        
         /// <summary>
         /// Control txtNoReferencia.
         /// </summary>
@@ -947,7 +947,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoReferencia;
-
+        
         /// <summary>
         /// Control lblReqNoReferencia.
         /// </summary>
@@ -956,7 +956,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqNoReferencia;
-
+        
         /// <summary>
         /// Control Label4.
         /// </summary>
@@ -965,7 +965,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-
+        
         /// <summary>
         /// Control ddlProveedor.
         /// </summary>
@@ -974,7 +974,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProveedor;
-
+        
         /// <summary>
         /// Control lblReqProveedor.
         /// </summary>
@@ -983,7 +983,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqProveedor;
-
+        
         /// <summary>
         /// Control lblImporte.
         /// </summary>
@@ -992,7 +992,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblImporte;
-
+        
         /// <summary>
         /// Control txtImporte.
         /// </summary>
@@ -1001,7 +1001,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtImporte;
-
+        
         /// <summary>
         /// Control lblReqImporte.
         /// </summary>
@@ -1010,7 +1010,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqImporte;
-
+        
         /// <summary>
         /// Control ftbImporte.
         /// </summary>
@@ -1019,7 +1019,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender ftbImporte;
-
+        
         /// <summary>
         /// Control lblRubro.
         /// </summary>
@@ -1028,7 +1028,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRubro;
-
+        
         /// <summary>
         /// Control ddlRubro.
         /// </summary>
@@ -1037,7 +1037,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRubro;
-
+        
         /// <summary>
         /// Control lblReqRubro.
         /// </summary>
@@ -1046,7 +1046,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReqRubro;
-
+        
         /// <summary>
         /// Control lblErrorGastoEstimado.
         /// </summary>
@@ -1055,7 +1055,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorGastoEstimado;
-
+        
         /// <summary>
         /// Control btnAceptarEstimado.
         /// </summary>
@@ -1064,7 +1064,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarEstimado;
-
+        
         /// <summary>
         /// Control btnCancelarEstimado.
         /// </summary>
@@ -1073,7 +1073,7 @@ namespace ClientesCasa.Views.Gastos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarEstimado;
-
+        
         /// <summary>
         /// Control upgGastosEstimados.
         /// </summary>

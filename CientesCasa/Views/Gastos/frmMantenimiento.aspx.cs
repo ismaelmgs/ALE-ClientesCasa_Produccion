@@ -25,6 +25,7 @@ namespace ClientesCasa.Views.Gastos
         #region EVENTOS
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> ** INICIO Load   -------------------------------------------------");
             //se inicia el presentador
             oPresenter = new Mantenimiento_Presenter(this, new DBMantenimiento());
 
@@ -36,13 +37,17 @@ namespace ClientesCasa.Views.Gastos
                 if (eGetCargaInicial != null)
                     eGetCargaInicial(sender, e);
             }
+
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN Load   -------------------------------------------------");
         }
         protected void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             try
             {
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> ** INICIO busqueda de clientes");
                 if (eSearchObj != null)
                     eSearchObj(sender, e);
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN busqueda de clientes");
             }
             catch (Exception ex)
             {
@@ -87,6 +92,7 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> Selecciona la matricula ************");
                 //dtGastosMex = null;
                 lstCliente = new List<string>();
                 string sMatriculag = string.Empty;
@@ -129,6 +135,7 @@ namespace ClientesCasa.Views.Gastos
 
                         sContrato = sContratog;
                         mpePeriodo.Show();
+                        //Utils.GuardarBitacora("MANTTO_DATOS  --> Muestra el Calendario");
                     }
                 }
             }
@@ -141,6 +148,7 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> ** INICIO Selecciona del periodo a consultar ************");
                 Page.Validate("VPeriodo");
                 if (Page.IsValid)
                 {
@@ -178,6 +186,7 @@ namespace ClientesCasa.Views.Gastos
                 }
                 else
                     mpePeriodo.Show();
+                //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN muestra resultados en pantalla");
             }
             catch (Exception ex)
             {
@@ -646,6 +655,7 @@ namespace ClientesCasa.Views.Gastos
         decimal dSumaImporteO = 0;
         protected void gvMantenimiento_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO RowDataBound MXN ---");
             string sRubroSelect = string.Empty;
             string sProvGSelect = string.Empty;
             try
@@ -654,15 +664,15 @@ namespace ClientesCasa.Views.Gastos
                 {
                     DataTable dt = dtGastosMEX;
 
-                    GridView gvDetalle = (GridView)e.Row.FindControl("gvDetalleGastoMXN");
-                    if (gvDetalle != null)
-                    {
-                        DataTable dtD = dt.Clone();
-                        dtD.ImportRow(dt.Rows[e.Row.RowIndex]);
+                    //GridView gvDetalle = (GridView)e.Row.FindControl("gvDetalleGastoMXN");
+                    //if (gvDetalle != null)
+                    //{
+                    //    DataTable dtD = dt.Clone();
+                    //    dtD.ImportRow(dt.Rows[e.Row.RowIndex]);
                         
-                        gvDetalle.DataSource = dtD;
-                        gvDetalle.DataBind();
-                    }
+                    //    gvDetalle.DataSource = dtD;
+                    //    gvDetalle.DataBind();
+                    //}
 
                     ImageButton btnGastoE = (ImageButton)e.Row.FindControl("btnEliminarMEX");
                     if (btnGastoE != null)
@@ -798,11 +808,13 @@ namespace ClientesCasa.Views.Gastos
             {
 
             }
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN RowDataBound MXN --");
         }
         decimal dSumaImporteUSA = 0;
         decimal dSumaImporteOUSA = 0;
         protected void gvMantenimientoUSA_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> INICIO RowDataBound USD ---");
             try
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
@@ -952,6 +964,7 @@ namespace ClientesCasa.Views.Gastos
             {
 
             }
+            //Utils.GuardarBitacora("MANTTO_DATOS  --> FIN RowDataBound USD --");
         }
         protected void btnBuscarPierna_Click(object sender, EventArgs e)
         {
@@ -1084,11 +1097,19 @@ namespace ClientesCasa.Views.Gastos
         {
             try
             {
+               // Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Carga Importes porcentajes");
                 CargaImportePorcentajes(gvMantenimiento);
-                RecuperaGridPesos();
+                //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Carga Importes porcentajes");
 
+                //Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Recupera Grid Pesos");
+                RecuperaGridPesos();
+                //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Recupera Grid Pesos");
+
+                //Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Valida porcentajes");
                 if (ValidaPorcentajes(gvMantenimiento) != 0)
                 {
+                    //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Valida porcentajes");
+
                     eMoneda = MonedaGasto.Pesos;
                     upaGastosPesos.Update();
                     lblCaption.Text = "Gastos en Pesos";
@@ -1097,6 +1118,7 @@ namespace ClientesCasa.Views.Gastos
                     upaGridGastosMXN.Update();
                     return;
                 }
+                //Utils.GuardarBitacora("MANTTO_DATOS --> ** INICIO Actualiza grid pesos");
                 string sRes = ActualizaGridPesos();
                 //Utils.GuardarBitacora("MANTTO_DATOS --> FIN Actualiza grid pesos");
 
@@ -1874,13 +1896,16 @@ namespace ClientesCasa.Views.Gastos
                 oLstGastoE = (List<GastoEstimado>)Session["lstGridGastoEstimado"];
                 oLstContratosGasto = (List<MantenimientoGastos>)Session["lstGridMantenimientoGastos"];
 
-
+                //Utils.GuardarBitacora("MANTTO_DATOS  -->        eSaveObj");
                 if (eSaveObj != null)
                     eSaveObj(null, EventArgs.Empty);
 
+
+                //Utils.GuardarBitacora("MANTTO_DATOS  -->        eInsImpGasto");
                 if (eInsImpGasto != null)
                     eInsImpGasto(null, EventArgs.Empty);
 
+                //Utils.GuardarBitacora("MANTTO_DATOS  -->        eObjSelected");
                 if (eObjSelected != null)
                     eObjSelected(null, EventArgs.Empty);
 

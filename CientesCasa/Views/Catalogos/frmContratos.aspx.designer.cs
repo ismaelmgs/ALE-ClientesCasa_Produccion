@@ -929,7 +929,7 @@ namespace ClientesCasa.Views.Catalogos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblDetalleTarifa;
-
+        
         /// <summary>
         /// Control lblRepEdoCuenta.
         /// </summary>
@@ -938,7 +938,7 @@ namespace ClientesCasa.Views.Catalogos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRepEdoCuenta;
-
+        
         /// <summary>
         /// Control ddlRepEdoCuenta.
         /// </summary>
@@ -947,7 +947,25 @@ namespace ClientesCasa.Views.Catalogos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRepEdoCuenta;
-
+        
+        /// <summary>
+        /// Control lblRequiereIVA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRequiereIVA;
+        
+        /// <summary>
+        /// Control rdnLstIva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdnLstIva;
+        
         /// <summary>
         /// Control lblNoPoliza.
         /// </summary>

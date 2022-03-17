@@ -247,6 +247,7 @@ namespace ClientesCasa.Presenter
                         ds.Tables.Add(dtMEX);
                         //ds.Tables.Add(dtUSA);
                         ds.Tables.Add(dsCon.Tables[2].Copy());
+                        ds.Tables.Add(dsCon.Tables[3].Copy());
                     }
                 }
 
@@ -363,6 +364,7 @@ namespace ClientesCasa.Presenter
                         //ds.Tables.Add(dtMEX);
                         ds.Tables.Add(dtUSA);
                         ds.Tables.Add(dsCon.Tables[2].Copy());
+                        ds.Tables.Add(dsCon.Tables[4].Copy());
                     }
                 }
 
