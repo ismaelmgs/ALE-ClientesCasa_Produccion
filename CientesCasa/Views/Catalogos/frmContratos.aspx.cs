@@ -32,6 +32,8 @@ namespace ClientesCasa.Views.Catalogos
 
                 if (eGetDatosIniciales != null)
                     eGetDatosIniciales(sender, e);
+
+                Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
             }
 
             if (Request[txtFechaContrato.UniqueID] != null)
@@ -66,6 +68,7 @@ namespace ClientesCasa.Views.Catalogos
                     txtFechaFinSeguro.Text = Request[txtFechaFinSeguro.UniqueID];
                 }
             }
+
         }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -376,15 +379,19 @@ namespace ClientesCasa.Views.Catalogos
         {
             try
             {
-                if (iIdContrato == 0)
+                Page.Validate("FechaValid");
+                if (Page.IsValid)
                 {
-                    if (eSaveContrato != null)
-                        eSaveContrato(sender, e);
-                }
-                else
-                {
-                    if (eUpaContrato != null)
-                        eUpaContrato(sender, e);
+                    if (iIdContrato == 0)
+                    {
+                        if (eSaveContrato != null)
+                            eSaveContrato(sender, e);
+                    }
+                    else
+                    {
+                        if (eUpaContrato != null)
+                            eUpaContrato(sender, e);
+                    }
                 }
             }
             catch (Exception ex)
@@ -660,6 +667,7 @@ namespace ClientesCasa.Views.Catalogos
                 txtRazonSocial.Text = string.Empty;
                 rblTieneRFC.SelectedValue = "1";
                 txtRFC.Text = string.Empty;
+                txtRFC.Enabled = true;
                 ddlTipoContribuyente.SelectedIndex = -1;
                 chkActivo.Checked = true;
                 txtTelefonoCliente.Text = string.Empty;
@@ -919,6 +927,7 @@ namespace ClientesCasa.Views.Catalogos
                     sRazonSocial = txtRazonSocial.Text.S(),
                     bRFC = rblTieneRFC.SelectedValue == "1" ? true : false,
                     sRFC = rblTieneRFC.SelectedValue == "1" ? txtRFC.Text.S() : string.Empty,
+                    //sRFC = txtRFC.Text.S(),
                     sTipoContribuyente = ddlTipoContribuyente.SelectedValue.S(),
                     iActivo = chkActivo.Checked ? 1 : 0,
                     sTelefono = txtTelefonoCliente.Text.S(),
@@ -942,12 +951,15 @@ namespace ClientesCasa.Views.Catalogos
                     sClaveContrato = txtClaveContrato.Text.S(),
                     sAeronaveMatricula = ReadMatricula.Text.S(),
                     sAeronaveSerie = txtAeronaveSerie.Text.S(),
-                    iPorcentajePart = txtPorcentPart.Text.S().I(),
+                    iPorcentajePart = txtPorcentPart.Text.S().D(),
                     iHorasContratadas = txtHorasContratadas.Text.S().I(),
                     bAplicaIntercambios = rblAplcaIntercambios.SelectedValue == "1" ? true : false,
                     iFactorIntercambio = rblFactorIntercambio.SelectedValue.S().I(),
 
-                    dtFechaContrato = txtFechaContrato.Text.S() == string.Empty ? null : (DateTime?)txtFechaContrato.Text.S().Dt(),
+                    //dtFechaContrato = txtFechaContrato.Text.S() == string.Empty ? null : (DateTime?)txtFechaContrato.Text.S().Dt(),
+
+                    dtFechaContrato = txtFechaContrato.Text == "01/01/0001" ? DateTime.Now.ToShortDateString().S().Dt() : (DateTime?)txtFechaContrato.Text.S().Dt(),
+
                     iEstatusContrato = ddlEstatusContrato.SelectedValue.S().I(),
 
                     iRequiereIVA = rdnLstIva.SelectedValue == "1" ? 1 : 0,
@@ -966,16 +978,22 @@ namespace ClientesCasa.Views.Catalogos
                     dContratoIntercambiosFerry = txtIntercambioFerry.Text.S().D(),
                     bContratoIntercambiosAplicaFerry = rblAplicaFerry.SelectedValue == "1" ? true : false,
 
-                    dtFechaFinContrato = txtFechaFinContrato.Text.S().Dt(),
+                    //dtFechaFinContrato = txtFechaFinContrato.Text.S().Dt(),
+                    dtFechaFinContrato = txtFechaFinContrato.Text == "01/01/0001" ? DateTime.Now.ToShortDateString().S().Dt() : txtFechaFinContrato.Text.S().Dt(),
+
                     dAnticipoContrato = txtAnticipoContrato.Text.Replace(",", "").S().D(),
                     sMonedaAnticipo = ddlMonedaAnticipo.SelectedValue.S(),
-                    iTipoServicioConsultoria = rblServicioConsultoria.SelectedValue.S().I(),
+                    iTipoServicioConsultoria = rblServicioConsultoria.SelectedValue.I(),
                     iTipoTarifa = rblTarifas.SelectedValue.S().I(),
                     iDetalleTipoTarifa = rblDetalleTarifa.SelectedValue.S().I(),
                     sNoPoliza = txtNoPoliza.Text.S(),
                     sEmpresaAseguradora = txtEmpresaAseguradora.Text.S(),
-                    dtFechaInicioSeg = txtFechaInicioSeguro.Text.S().Dt(),
-                    dtFechaFinSeg = txtFechaFinSeguro.Text.S().Dt(),
+
+                    //dtFechaInicioSeg = txtFechaInicioSeguro.Text.S().Dt(),
+                    dtFechaInicioSeg = txtFechaInicioSeguro.Text == "01/01/0001" ? DateTime.Now.ToShortDateString().S().Dt() : txtFechaInicioSeguro.Text.S().Dt(),
+
+                    //dtFechaFinSeg = txtFechaFinSeguro.Text.S().Dt(),
+                    dtFechaFinSeg = txtFechaFinSeguro.Text == "01/01/0001" ? DateTime.Now.ToShortDateString().S().Dt() : txtFechaFinSeguro.Text.S().Dt(),
 
                     sUsuario = Utils.GetUser.S(),
                     iRepEdoCuenta = ddlRepEdoCuenta.SelectedValue.S().I()
@@ -991,6 +1009,10 @@ namespace ClientesCasa.Views.Catalogos
                     txtRazonSocial.Text = oCat.sRazonSocial;
                     rblTieneRFC.SelectedValue = oCat.bRFC == true ? "1" : "0";
                     txtRFC.Text = oCat.sRFC;
+                    if (rblTieneRFC.SelectedValue == "1")
+                        txtRFC.Enabled = true;
+                    else
+                        txtRFC.Enabled = false;
 
                     if (oCat.sTipoContribuyente != string.Empty)
                         ddlTipoContribuyente.SelectedValue = oCat.sTipoContribuyente;
@@ -1072,7 +1094,7 @@ namespace ClientesCasa.Views.Catalogos
 
                     rbtnTRipoCosto.SelectedValue = oCat.iTipoCosto.S();
 
-                    if (oCat.iTipoServicioConsultoria > 0)
+                    if (oCat.iTipoServicioConsultoria >= 0)
                         rblServicioConsultoria.SelectedValue = oCat.iTipoServicioConsultoria.S();
 
                     if (oCat.iTipoTarifa > 0)
@@ -1194,6 +1216,27 @@ namespace ClientesCasa.Views.Catalogos
             else
             {
                 rblFactorIntercambio.Enabled = true;
+            }
+        }
+
+        protected void rblTieneRFC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(rblTieneRFC.SelectedValue == "1")
+                {
+                    txtRFC.Enabled = true;
+                    rvRFC.Enabled = true;
+                }
+                else if(rblTieneRFC.SelectedValue == "0")
+                {
+                    txtRFC.Enabled = false;
+                    rvRFC.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

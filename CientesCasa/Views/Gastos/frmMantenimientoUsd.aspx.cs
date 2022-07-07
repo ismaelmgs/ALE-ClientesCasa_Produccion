@@ -1012,25 +1012,33 @@ namespace ClientesCasa.Views.Gastos
 
                             // MOGI 21/01/2022
                             //LlenaGridDetalle(gvMantenimientoUSA, iIdFila, dtGastosUSA, "gvDetalleGastoUSD", upa);
+                            //UpdatePanel upaGridDetalle = (UpdatePanel)gvMantenimientoUSA.Rows[iIdFila].FindControl("upaDetGastosMXN");
+                            //if (upaGridDetalle != null)
+                            //    upaGridDetalle.Update();
 
-                            UpdatePanel upaFechaMXN = (UpdatePanel)gvMantenimientoUSA.Rows[iIdFila].FindControl("upaFechaUSD");
-                            if (upaFechaMXN != null)
+                            UpdatePanel upaFechaUSD = (UpdatePanel)gvMantenimientoUSA.Rows[iIdFila].FindControl("upaFechaUSD");
+                            if (upaFechaUSD != null)
                             {
-                                Label lblFechaMXN = (Label)gvMantenimientoUSA.Rows[iIdFila].FindControl("lblFechaUSD");
-                                if (lblFechaMXN != null)
-                                    lblFechaMXN.Text = row[0]["FechaVuelo"].S().Dt().ToString("dd/MM/yyyy");
+                                Label lblFechaUSD = (Label)gvMantenimientoUSA.Rows[iIdFila].FindControl("lblFechaUSD");
+                                if (lblFechaUSD != null)
+                                    lblFechaUSD.Text = row[0]["FechaVuelo"].S().Dt().ToString("dd/MM/yyyy");
 
+                                upaFechaUSD.Update();
+                            }
+
+                            UpdatePanel upaNumPiernaUSD = (UpdatePanel)gvMantenimientoUSA.Rows[iIdFila].FindControl("upaNumPiernaUSD");
+                            if (upaNumPiernaUSD != null)
+                            {
                                 Label lblNoPierna = (Label)gvMantenimientoUSA.Rows[iIdFila].FindControl("lblNoPierna");
                                 if (lblNoPierna != null)
                                     lblNoPierna.Text = iIdPierna.S();
 
-                                upaFechaMXN.Update();
+                                Label lblNumeroPierna = (Label)gvMantenimientoUSA.Rows[iIdFila].FindControl("lblNumeroPierna");
+                                if (lblNumeroPierna != null)
+                                    lblNumeroPierna.Text = iIdPierna.S();
+
+                                upaNumPiernaUSD.Update();
                             }
-
-                            UpdatePanel upaGridDetalle = (UpdatePanel)gvMantenimientoUSA.Rows[iIdFila].FindControl("upaDetGastosUSD");
-                            if (upaGridDetalle != null)
-                                upaGridDetalle.Update();
-
                         }
                     }
                 }
@@ -1199,6 +1207,31 @@ namespace ClientesCasa.Views.Gastos
                 dResultado = ResPorcentaje(dImporte, ddlPorc.SelectedItem.Text.D());
                 txtImporte2.Text = dResultado.ToString("N2");
                 upaGastosDolares.Update();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        protected void txtImporteU_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //TextBox txt = (TextBox)sender;
+                //GridViewRow gvr = (GridViewRow)txt.NamingContainer;
+                //int index = gvr.RowIndex;
+                //DropDownList ddlPorc = (DropDownList)gvMantenimientoUSA.Rows[index].FindControl("ddlPorcentaje");
+                //TextBox txtImporte = (TextBox)gvMantenimientoUSA.Rows[index].FindControl("txtImporte");
+                //TextBox txtImporte2 = (TextBox)gvMantenimientoUSA.Rows[index].FindControl("txtImporte_2");
+                //decimal dImporte = 0;
+                //decimal dResultado = 0;
+
+                //if (txtImporte != null)
+                //    dImporte = txtImporte.Text.D();
+
+                //dResultado = ResPorcentaje(dImporte, ddlPorc.SelectedItem.Text.D());
+                //txtImporte2.Text = dResultado.ToString("N2");
+                //upaGastosDolares.Update();
             }
             catch (Exception)
             {
@@ -1531,6 +1564,7 @@ namespace ClientesCasa.Views.Gastos
                 for (int i = 0; i < ifilas; i++)
                 {
                     int iIdGasto = gvMantenimientoUSA.DataKeys[i.S().I()]["IdGasto"].S().I();
+                    TextBox txtMonto = (TextBox)gvMantenimientoUSA.Rows[i].FindControl("txtImporte");
 
                     for (int j = 0; j < dtContratos.Rows.Count; j++)
                     {
@@ -1553,27 +1587,45 @@ namespace ClientesCasa.Views.Gastos
                             ddl = (DropDownList)gvMantenimientoUSA.Rows[i].FindControl("ddlPorcentaje");
                         }
 
+                        decimal dRes = 0;
+                        decimal dImp = 0;
+
+                        if (txtMonto != null)
+                            dImp = txtMonto.Text.D();
+
+                        dRes = ResPorcentaje(dImp, ddl.SelectedItem.Text.D());
 
 
                         MantenimientoGastos oM = new MantenimientoGastos();
                         oM.iIdGasto = iIdGasto.S().I();
-                        oM.dImporte = txt.Text.S().D();
+                        oM.dImporte = dRes; //txt.Text.S().D();
                         oM.sContrato = sContrato;
                         oM.iPorcentaje = ddl.SelectedValue.S().I();
                         oM.sUsuario = Utils.GetUser;
                         lista.Add(oM);
                     }
 
-                    TextBox txtMonto = (TextBox)gvMantenimientoUSA.Rows[i].FindControl("txtImporte");
+                    
                     DropDownList ddlRubro = (DropDownList)gvMantenimientoUSA.Rows[i].FindControl("ddlRubro");
                     DropDownList ddlTipoGasto = (DropDownList)gvMantenimientoUSA.Rows[i].FindControl("ddlTipoGasto");
                     //DropDownList ddlAmpliadoGasto = (DropDownList)gvMantenimientoUSA.Rows[i].FindControl("ddlAcumulado1");
+
+                    TextBox txtImporte = (TextBox)gvMantenimientoUSA.Rows[i].FindControl("txtImporte");
+                    DropDownList ddlPorc = (DropDownList)gvMantenimientoUSA.Rows[i].FindControl("ddlPorcentaje");
+                    TextBox txtImporte2 = (TextBox)gvMantenimientoUSA.Rows[i].FindControl("txtImporte_2");
+                    decimal dImporte = 0;
+                    decimal dResultado = 0;
+
+                    if (txtMonto != null)
+                        dImporte = txtImporte.Text.D();
+
+                    dResultado = dImporte; //ResPorcentaje(dImporte, ddlPorc.SelectedItem.Text.D());
 
                     if (txtMonto != null && ddlRubro != null && ddlTipoGasto != null)
                     {
                         GastoEstimado oG = new GastoEstimado();
                         oG.iIdGasto = iIdGasto;
-                        oG.dImporte = txtMonto.Text.Replace(",", "").S().D();
+                        oG.dImporte = dResultado.S().Replace(",", "").S().D();
                         oG.iNumeroTrip = 0;
                         oG.sUsuario = Utils.GetUser;
                         oG.iIdRubro = ddlRubro.SelectedValue.S().I();
@@ -1586,9 +1638,14 @@ namespace ClientesCasa.Views.Gastos
 
                         if (oG.iNumeroPierna == 0)
                         {
-                            Label lblNoPierna = (Label)gvMantenimientoUSA.Rows[i].FindControl("lblNoPierna");
+                            //Label lblNoPierna = (Label)gvMantenimientoUSA.Rows[i].FindControl("lblNoPierna");
+                            //if (lblNoPierna.Text != null)
+                            //    oG.iNumeroPierna = lblNoPierna.Text.S().I();
+
+                            Label lblNoPierna = (Label)gvMantenimientoUSA.Rows[i].FindControl("lblNumeroPierna");
                             if (lblNoPierna.Text != null)
                                 oG.iNumeroPierna = lblNoPierna.Text.S().I();
+
                         }
 
                         TextBox txtComentarios = (TextBox)gvMantenimientoUSA.Rows[i].FindControl("txtComentarios");
@@ -2243,6 +2300,8 @@ namespace ClientesCasa.Views.Gastos
             set { ViewState["VExport"] = value; }
         }
         #endregion
+
+        
 
     }
 }

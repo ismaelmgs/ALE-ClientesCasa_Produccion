@@ -350,7 +350,9 @@
 
                                                                                 <asp:TemplateField HeaderText="Importe">
                                                                                     <ItemTemplate>
+
                                                                                         <asp:TextBox ID="txtImporte" runat="server" Style="width: 70px !important; text-align: right;"></asp:TextBox>
+
                                                                                     </ItemTemplate>
                                                                                 </asp:TemplateField>
 

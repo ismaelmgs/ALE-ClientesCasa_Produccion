@@ -280,17 +280,31 @@
                                 <div class="col span_1_of_4">&nbsp;</div>
                             </div>
                             <div class="section group">
-	                            <div class="col span_1_of_4">
-                                    <asp:Label ID="lblTieneRFC" runat="server" Text="Tiene RFC: " CssClass=""></asp:Label>
-                                </div>
-                                <div class="col span_1_of_4">
-                                    <asp:RadioButtonList ID="rblTieneRFC" runat="server" RepeatDirection="Horizontal">
-                                        <asp:ListItem Text="Si" Value="1" Selected="True"></asp:ListItem>
-                                        <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                        </asp:RadioButtonList>
-                                    </div>
-                                <div class="col span_1_of_4"><asp:Label ID="lblRFC" runat="server" Text="RFC:" CssClass=""></asp:Label></div>
-                                <div class="col span_1_of_4"><asp:TextBox ID="txtRFC" runat="server" CssClass="celda1" MaxLength="13" placeholder="RFC"></asp:TextBox></div>
+                                <asp:UpdatePanel ID="upaRFC" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <div class="col span_1_of_4">
+                                            <asp:Label ID="lblTieneRFC" runat="server" Text="Tiene RFC: " CssClass=""></asp:Label>
+                                        </div>
+                                        <div class="col span_1_of_4">
+
+                                            <asp:RadioButtonList ID="rblTieneRFC" runat="server" RepeatDirection="Horizontal" AutoPostBack="true" OnSelectedIndexChanged="rblTieneRFC_SelectedIndexChanged">
+                                                <asp:ListItem Text="Si" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                                </asp:RadioButtonList>
+                                            </div>
+                                        <div class="col span_1_of_4"><asp:Label ID="lblRFC" runat="server" Text="RFC:" CssClass=""></asp:Label></div>
+                                        <div class="col span_1_of_4">
+                                            <asp:TextBox ID="txtRFC" runat="server" CssClass="celda1" MaxLength="13" placeholder="RFC" Enabled="false"></asp:TextBox>
+                                            <br />
+                                            <asp:RequiredFieldValidator ID="rvRFC" runat="server" ErrorMessage="Se requiere RFC" ControlToValidate="txtRFC"
+                                                Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="rblTieneRFC" EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+	                            
                             </div>
                             <div class="section group">
 	                            <div class="col span_1_of_4">
@@ -607,18 +621,37 @@
                                     <asp:Label ID="lblFechaContrato" runat="server"  Text="Fecha inicio contrato:"></asp:Label>
                                 </div>
                                 <div class="col span_1_of_4">
-                                    <asp:TextBox ID="txtFechaContrato" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtFechaContrato" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control" ValidationGroup="FechaValid"></asp:TextBox>
                                     <label for="txtFechaContrato" style="height:24px; width:24px" class="input-group-addon generic_btn">
                                     </label>
+
+                                    <br />
+                                    <%--<asp:RegularExpressionValidator ID="revDateContrato" runat="server" ErrorMessage="Formato de fecha incorrecta" ControlToValidate="txtFechaContrato" 
+                                        ValidationExpression="^([0]?[1-9]|[1-2][0-9]|[3][0-1])/([0]?[1-9]|[1][0-2])/([1-3][0-9][0-9][0-9])$" ValidationGroup="FechaValid" ForeColor="Red"
+                                        Display="" SetFocusOnError="true">
+                                    </asp:RegularExpressionValidator>--%>
+
+                                    <asp:CompareValidator id="dateValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="txtFechaContrato" 
+                                        ErrorMessage="Ingrese fecha valida." Display="Dynamic" ForeColor="Red"  ValidationGroup="FechaValid"></asp:CompareValidator>
+
                                 </div>
                                 <div class="col span_1_of_4">
 
                                     <asp:Label ID="lblFechaFinContrato" runat="server"  Text="Fecha fin contrato:"></asp:Label>
                                 </div>
                                 <div class="col span_1_of_4">
-                                    <asp:TextBox ID="txtFechaFinContrato" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtFechaFinContrato" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control" ValidationGroup="FechaValid"></asp:TextBox>
                                     <label for="txtFechaFinContrato" style="height:24px; width:24px" class="input-group-addon generic_btn">
                                     </label>
+
+                                    <br />
+                                    <%--<asp:RegularExpressionValidator ID="revDate" runat="server" ErrorMessage="Formato de fecha incorrecta" ControlToValidate="txtFechaFinContrato" 
+                                        ValidationExpression="^([0]?[1-9]|[1-2][0-9]|[3][0-1])/([0]?[1-9]|[1][0-2])/([1-3][0-9][0-9][0-9])$" ValidationGroup="FechaValid" ForeColor="Red"
+                                        Display="None" SetFocusOnError="true">
+                                    </asp:RegularExpressionValidator>--%>
+                                    <asp:CompareValidator id="CompareValidator1" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="txtFechaFinContrato" 
+                                        ErrorMessage="Ingrese fecha valida." Display="Dynamic" ForeColor="Red"  ValidationGroup="FechaValid"></asp:CompareValidator>
+
                                 </div>
                             </div>
                             <div class="section group">
@@ -660,7 +693,7 @@
                                 <div class="col span_1_of_4" style="text-align:right;">
                                     <div class="controls" style="margin-left: -30%;">
                                         <asp:RadioButtonList ID="rblServicioConsultoria" runat="server" RepeatDirection="Horizontal" CssClass="radiorlr">
-                                            <asp:ListItem Text="Flight Fast" Value="1" Selected="True"></asp:ListItem>
+                                            <asp:ListItem Text="Flight Fast" Value="1"></asp:ListItem>
                                             <asp:ListItem Text="AOC" Value="2"></asp:ListItem>
                                             <asp:ListItem Text="No Aplica" Value="0"></asp:ListItem>
                                         </asp:RadioButtonList>
@@ -744,17 +777,31 @@
                                     <asp:Label ID="lblFechaInicioSeguro" runat="server" Text="Fecha inicio:"></asp:Label>
                                 </div>
                                 <div class="col span_1_of_4">
-                                    <asp:TextBox ID="txtFechaInicioSeguro" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtFechaInicioSeguro" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control" ValidationGroup="FechaValid"></asp:TextBox>
                                     <label for="txtFechaInicioSeguro" style="height:24px; width:24px" class="input-group-addon generic_btn">
                                     </label>
+                                    <br />
+                                   <%-- <asp:RegularExpressionValidator ID="revDateSeguro" runat="server" ErrorMessage="Formato de fecha incorrecta" ControlToValidate="txtFechaInicioSeguro" 
+                                        ValidationExpression="^([0]?[1-9]|[1-2][0-9]|[3][0-1])/([0]?[1-9]|[1][0-2])/([1-3][0-9][0-9][0-9])$" ValidationGroup="FechaValid" ForeColor="Red"
+                                        Display="None" SetFocusOnError="true">
+                                    </asp:RegularExpressionValidator>--%>
+                                    <asp:CompareValidator id="CompareValidator2" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="txtFechaInicioSeguro" 
+                                        ErrorMessage="Ingrese fecha valida." Display="Dynamic" ForeColor="Red"  ValidationGroup="FechaValid"></asp:CompareValidator>
                                 </div>
                                 <div class="col span_1_of_4">
                                     <asp:Label ID="lblFechaFinSeguro" runat="server" Text="Fecha fin:"></asp:Label>
                                 </div>
                                 <div class="col span_1_of_4">
-                                    <asp:TextBox ID="txtFechaFinSeguro" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtFechaFinSeguro" type="date" runat="server" placeholder="dd/mm/aaaa" ClientIDMode="Static" CssClass="form-control" ValidationGroup="FechaValid"></asp:TextBox>
                                     <label for="txtFechaFinSeguro" style="height:24px; width:24px" class="input-group-addon generic_btn">
                                     </label>
+                                    <br />
+                                   <%-- <asp:RegularExpressionValidator ID="revDateFinSeguro" runat="server" ErrorMessage="Formato de fecha incorrecta" ControlToValidate="txtFechaFinSeguro" 
+                                        ValidationExpression="^([0]?[1-9]|[1-2][0-9]|[3][0-1])/([0]?[1-9]|[1][0-2])/([1-3][0-9][0-9][0-9])$" ValidationGroup="FechaValid" ForeColor="Red"
+                                        Display="None" SetFocusOnError="true">
+                                    </asp:RegularExpressionValidator>--%>
+                                    <asp:CompareValidator id="CompareValidator3" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="txtFechaFinSeguro" 
+                                        ErrorMessage="Ingrese fecha valida." Display="Dynamic" ForeColor="Red"  ValidationGroup="FechaValid"></asp:CompareValidator>
                                 </div>
                             </div>
                             <div class="section group">
@@ -765,7 +812,7 @@
                                 <div class="col span_1_of_4">
                                 </div>
                                 <div class="col span_1_of_4" style="text-align:right">
-                                    <asp:Button ID="btnContratoAceptar" runat="server" Text="Guardar" CssClass="btn btn-success" OnClick="btnContratoAceptar_Click"/>
+                                    <asp:Button ID="btnContratoAceptar" runat="server" Text="Guardar" CssClass="btn btn-success" OnClick="btnContratoAceptar_Click" ValidationGroup="FechaValid" />
                                 </div>
                             </div>
                         </tr>
